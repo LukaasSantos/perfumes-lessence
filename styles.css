@@ -1,0 +1,82 @@
+/* styles.css */
+
+/* Custom fonts styling fallback/helper */
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3, .font-serif-elegant {
+  font-family: 'Playfair Display', serif;
+}
+
+/* Custom Glassmorphism styles */
+.glass-nav {
+  background: rgba(250, 247, 242, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(74, 94, 78, 0.1);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(74, 94, 78, 0.08);
+}
+
+/* Custom Green Grid Pattern for Catalog Items as requested: "fundo verde com grid" */
+.catalog-item-bg {
+  background-color: #2F3E33; /* Elegant rich forest green */
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.catalog-item-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.08), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.catalog-item-bg:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 30px -10px rgba(47, 62, 51, 0.3);
+  border-color: rgba(209, 226, 211, 0.2);
+}
+
+.catalog-item-bg:hover::before {
+  opacity: 1;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF7F2;
+}
+::-webkit-scrollbar-thumb {
+  background: #C3D3C4;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #A6BBA8;
+}
+
+/* Smooth transition utility */
+.transition-smooth {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}

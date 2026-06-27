@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L'Essence - Perfumaria Intuitiva & Niche</title>
+  <meta name="description" content="Encontre a sua fragrância ideal através de uma experiência gentil, personalizada e acolhedora. Atendimento exclusivo via WhatsApp.">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: {
+              50: '#FAF8F5',
+              100: '#FAF7F2',
+              200: '#F3ECE0',
+              300: '#E9DEC9',
+            },
+            sage: {
+              50: '#F4F7F4',
+              100: '#E9EFE9',
+              200: '#D1E2D3',
+              300: '#A3C2A7',
+              600: '#4A5E4E',
+              700: '#3D4D40',
+              800: '#2F3E33',
+              900: '#242F27',
+            },
+            terracotta: {
+              100: '#F5EAE6',
+              200: '#EBCEC4',
+              500: '#C68B75',
+              600: '#A76F5B',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- AOS (Animate on Scroll) -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-cream-100 text-sage-900 overflow-x-hidden">
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 left-0 right-0 z-50 glass-nav transition-smooth">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="font-serif-elegant text-2xl tracking-widest text-sage-800 font-semibold">L'ESSENCE</a>
+      
+      <div class="hidden md:flex items-center space-x-8 text-sm tracking-wider font-medium text-sage-700">
+        <a href="#concept" class="hover:text-sage-900 transition-colors">Conceito</a>
+        <a href="#assistant" class="hover:text-sage-900 transition-colors">Descobrir Aroma</a>
+        <a href="#catalog" class="hover:text-sage-900 transition-colors">Coleções</a>
+        <a href="#faq" class="hover:text-sage-900 transition-colors">Dúvidas</a>
+      </div>
+
+      <a href="https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20um%20atendimento%20personalizado." target="_blank" class="bg-sage-600 text-cream-50 hover:bg-sage-700 px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 shadow-sm flex items-center space-x-2">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 001.37 5.028L2 22l5.13-1.348a9.926 9.926 0 004.878 1.28c5.505 0 9.988-4.478 9.99-9.985 0-2.67-1.04-5.18-2.927-7.07C17.186 3.03 14.683 2 12.012 2zm5.82 14.072c-.32.905-1.6 1.657-2.22 1.758-.573.09-1.32.16-2.115-.094-.49-.158-1.12-.39-1.91-.734-3.37-1.465-5.52-4.883-5.69-5.109-.168-.225-1.37-1.815-1.37-3.463 0-1.648.86-2.46 1.166-2.793.305-.333.666-.416.89-.416a.65.65 0 01.46.213c.18.232.61 1.485.666 1.602.056.116.093.25.016.4-.077.15-.17.25-.336.44-.165.19-.35.43-.5.61-.17.195-.347.41-.15.75.196.34.873 1.436 1.87 2.324.997.888 1.84 1.162 2.186 1.306.346.143.55.12.753-.11.203-.23.873-1.01.11-1.258a6.37 6.37 0 00-.7-.41c-.244-.117-.49-.06-.67.016-.18.077-1.14.47-1.14.47s-.656.284-.97.1c-.314-.183-.56-.51-.81-.88-.25-.37-.876-1.57-.46-2.14.417-.57.97-.23.97-.23s.256.09.43.047c.174-.043.328-.158.4-.294.073-.136.32-.78.32-.78s.16-.39.06-.576c-.1-.186-.676-1.62-.926-2.073-.25-.453-.51-.375-.7-.375h-.6c-.23 0-.6.086-.92.436C6.776 6.848 6 7.828 6 9.818c0 1.99 1.45 3.918 1.65 4.19.2.27 2.85 4.33 6.9 6.07 3.37 1.45 4.67 1.17 6.35.29.61-.32 1.51-1.2 1.72-2.3z"/>
+        </svg>
+        <span>Atendimento</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-screen pt-32 pb-20 flex items-center justify-center bg-gradient-to-b from-[#FAF7F2] to-[#F3ECE0] px-6">
+    <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Text Area -->
+      <div class="lg:col-span-7 space-y-8" data-aos="fade-right">
+        <span class="text-xs uppercase tracking-widest text-[#4A5E4E] bg-[#D1E2D3] px-4 py-1.5 rounded-full font-semibold">
+          Despertar Olfativo
+        </span>
+        <h1 class="text-5xl md:text-7xl font-light text-sage-900 tracking-tight leading-tight">
+          A essência que expressa <br>
+          <span class="italic font-serif-elegant font-normal text-sage-700">sua alma.</span>
+        </h1>
+        <p class="text-lg text-sage-700 font-light max-w-xl leading-relaxed">
+          Sem pressa, sem rótulos complexos. Acreditamos em uma jornada guiada pelo afeto e intuição para encontrar a nota perfeita para o seu momento de vida.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+          <a href="#assistant" class="bg-sage-600 text-cream-50 hover:bg-sage-700 text-center py-4 px-8 rounded-xl font-medium tracking-wide transition-smooth shadow-md flex items-center justify-center space-x-2 group">
+            <span>Iniciar Jornada Intuitiva</span>
+            <svg class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+          <a href="#catalog" class="border border-sage-600/30 text-sage-700 hover:bg-[#FAF7F2] hover:text-sage-900 text-center py-4 px-8 rounded-xl font-medium tracking-wide transition-smooth flex items-center justify-center">
+            Ver Catálogo
+          </a>
+        </div>
+
+        <!-- Trust tags -->
+        <div class="grid grid-cols-3 gap-4 pt-8 border-t border-sage-200">
+          <div>
+            <p class="text-xl font-serif-elegant text-sage-800">100%</p>
+            <p class="text-xs text-sage-600 uppercase tracking-wider">Artesanal & Vegano</p>
+          </div>
+          <div>
+            <p class="text-xl font-serif-elegant text-sage-800">12h+</p>
+            <p class="text-xs text-sage-600 uppercase tracking-wider">Fixação Natural</p>
+          </div>
+          <div>
+            <p class="text-xl font-serif-elegant text-sage-800">Gratuito</p>
+            <p class="text-xs text-sage-600 uppercase tracking-wider">Envio de Amostras</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Imagery / Visual Presentation -->
+      <div class="lg:col-span-5 relative" data-aos="fade-left">
+        <!-- Soothing container with glass card design representing perfume -->
+        <div class="relative w-full aspect-[4/5] rounded-3xl overflow-hidden shadow-xl bg-gradient-to-tr from-sage-200 to-terracotta-200 p-8 flex flex-col justify-between">
+          <div class="absolute inset-0 bg-white/10 backdrop-blur-[2px] pointer-events-none"></div>
+          
+          <div class="relative z-10 flex justify-between items-start">
+            <span class="text-xs uppercase tracking-widest text-sage-700 bg-white/60 px-3 py-1 rounded-full font-medium">Original blend</span>
+            <span class="text-sm font-serif-elegant italic text-sage-800">N° 04</span>
+          </div>
+
+          <div class="relative z-10 flex flex-col items-center py-12">
+            <!-- Simulated elegant minimalistic perfume bottle -->
+            <div class="w-40 h-56 border-2 border-sage-800/40 rounded-2xl relative flex flex-col justify-between items-center p-4 bg-white/50 backdrop-blur-md shadow-lg transition-transform hover:scale-105 duration-500">
+              <div class="w-10 h-6 border-b-2 border-sage-800/40 bg-sage-800/25 rounded-t-sm"></div>
+              <div class="flex-1 flex flex-col justify-center items-center">
+                <span class="text-xs uppercase tracking-widest text-sage-700 mb-1 font-semibold">AURORA</span>
+                <span class="text-[9px] text-sage-500 italic">Eau de Parfum</span>
+              </div>
+              <div class="w-full text-center border-t border-sage-800/10 pt-2 text-[9px] text-sage-600 tracking-wider">100ML</div>
+            </div>
+          </div>
+
+          <div class="relative z-10 text-center">
+            <h4 class="font-serif-elegant text-2xl text-sage-800 mb-1">Aurora Bloom</h4>
+            <p class="text-xs text-sage-600 tracking-wider">Flor de Laranjeira, Pêra & Almíscar</p>
+          </div>
+        </div>
+        
+        <!-- Decorative circular backdrop -->
+        <div class="absolute -top-10 -right-10 w-40 h-40 bg-terracotta-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 -z-10 animate-pulse"></div>
+        <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-sage-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 -z-10 animate-pulse"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive Selection Assistant (Quiz) -->
+  <section id="assistant" class="py-24 bg-white px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center max-w-xl mx-auto mb-16" data-aos="fade-up">
+        <span class="text-xs uppercase tracking-widest text-sage-600 bg-sage-100 px-3 py-1 rounded-full font-medium">Personalização</span>
+        <h2 class="text-4xl font-light text-sage-900 mt-4 mb-3">Encontre o Aroma Perfeito</h2>
+        <p class="text-sm text-sage-600 leading-relaxed">Responda a duas simples perguntas intuitivas e nossa curadoria selecionará a essência que mais ressoa com você.</p>
+      </div>
+
+      <!-- Quiz Card -->
+      <div class="glass-card rounded-3xl p-8 md:p-12 shadow-sm border border-sage-100" data-aos="fade-up">
+        <div class="space-y-10">
+          
+          <!-- Question 1 -->
+          <div>
+            <h3 class="text-lg font-medium text-sage-800 mb-4 flex items-center space-x-2">
+              <span class="flex items-center justify-center w-6 h-6 rounded-full bg-sage-100 text-xs font-semibold text-sage-600">1</span>
+              <span>Qual momento do dia você quer iluminar com esta fragrância?</span>
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <button data-value="dia" class="quiz-moment w-full text-left p-5 border border-sage-200 rounded-2xl hover:border-sage-600 transition-smooth group focus:outline-none">
+                <span class="block text-sm font-semibold text-sage-800">Período Diurno</span>
+                <span class="block text-xs text-sage-600 mt-1 font-light">Leveza, frescor, sol, encontros casuais ou foco no trabalho.</span>
+              </button>
+              <button data-value="noite" class="quiz-moment w-full text-left p-5 border border-sage-200 rounded-2xl hover:border-sage-600 transition-smooth group focus:outline-none">
+                <span class="block text-sm font-semibold text-sage-800">Período Noturno</span>
+                <span class="block text-xs text-sage-600 mt-1 font-light">Elegância, profundidade, mistério, jantares ou ocasiões especiais.</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Question 2 -->
+          <div>
+            <h3 class="text-lg font-medium text-sage-800 mb-4 flex items-center space-x-2">
+              <span class="flex items-center justify-center w-6 h-6 rounded-full bg-sage-100 text-xs font-semibold text-sage-600">2</span>
+              <span>Como você define sua assinatura pessoal predominante?</span>
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <button data-value="casual" class="quiz-style w-full text-left p-5 border border-sage-200 rounded-2xl hover:border-sage-600 transition-smooth group focus:outline-none">
+                <span class="block text-sm font-semibold text-sage-800">Espontânea e Natural</span>
+                <span class="block text-xs text-sage-600 mt-1 font-light">Notas cítricas, herbáceas e florais frescas que trazem bem-estar simples.</span>
+              </button>
+              <button data-value="elegante" class="quiz-style w-full text-left p-5 border border-sage-200 rounded-2xl hover:border-sage-600 transition-smooth group focus:outline-none">
+                <span class="block text-sm font-semibold text-sage-800">Sofisticada e Marcante</span>
+                <span class="block text-xs text-sage-600 mt-1 font-light">Notas amadeiradas, orientais e densas que marcam presença com sutileza.</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Result Placeholder Rendered dynamically in JS -->
+          <div id="quiz-result" class="pt-4"></div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Concept / Philosophy Section -->
+  <section id="concept" class="py-24 bg-cream-50 px-6 border-y border-sage-200/40">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div class="order-2 lg:order-1" data-aos="fade-right">
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-sage-600 p-8 rounded-3xl text-white space-y-4">
+            <h4 class="font-serif-elegant text-2xl">Atendimento Humanizado</h4>
+            <p class="text-xs text-sage-200/90 leading-relaxed font-light">Não vendemos frascos, facilitamos conexões. Nossos consultores ajudam você no WhatsApp a mapear memórias olfativas.</p>
+          </div>
+          <div class="bg-terracotta-500 p-8 rounded-3xl text-white space-y-4 mt-8">
+            <h4 class="font-serif-elegant text-2xl">Origem Consciente</h4>
+            <p class="text-xs text-terracotta-100 leading-relaxed font-light">Ingredientes cultivados de forma justa, com extração ecológica e absoluto respeito ao meio ambiente.</p>
+          </div>
+        </div>
+      </div>
+      <div class="order-1 lg:order-2 space-y-6" data-aos="fade-left">
+        <span class="text-xs uppercase tracking-widest text-[#4A5E4E] bg-sage-200 px-3 py-1 rounded-full font-semibold">
+          Nossa Filosofia
+        </span>
+        <h2 class="text-4xl font-light text-sage-900">Uma experiência pensada para desacelerar o mundo.</h2>
+        <p class="text-sage-700 leading-relaxed font-light">
+          Queremos resgatar o afeto do contato um para um. Por isso, ao invés de carrinhos de compras frios e impessoais, convidamos você a conversar com nossa equipe.
+        </p>
+        <p class="text-sage-700 leading-relaxed font-light">
+          Entender suas preferências, tirar dúvidas e ajustar o envio de amostras faz parte do ritual que criamos para você se sentir cuidada em cada detalhe.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Catalog Section -->
+  <section id="catalog" class="py-24 px-6 max-w-7xl mx-auto">
+    <div class="text-center max-w-xl mx-auto mb-16" data-aos="fade-up">
+      <span class="text-xs uppercase tracking-widest text-sage-600 bg-sage-100 px-3 py-1 rounded-full font-medium">Coleções</span>
+      <h2 class="text-4xl font-light text-sage-900 mt-4 mb-3">Nossas Criações</h2>
+      <p class="text-sm text-sage-600 leading-relaxed">Fórmulas autorais focadas na sofisticação e conforto de longa duração.</p>
+    </div>
+
+    <!-- Category Filter Buttons -->
+    <div class="flex flex-wrap justify-center gap-3 mb-12" data-aos="fade-up">
+      <button data-category="all" class="filter-btn bg-[#4A5E4E] text-white py-2.5 px-6 rounded-full text-xs font-semibold uppercase tracking-wider transition-smooth">
+        Todos
+      </button>
+      <button data-category="fresco" class="filter-btn bg-[#FAF7F2] text-[#4A5E4E] hover:bg-[#D1E2D3] py-2.5 px-6 rounded-full text-xs font-semibold uppercase tracking-wider transition-smooth">
+        Frescos
+      </button>
+      <button data-category="amadeirado" class="filter-btn bg-[#FAF7F2] text-[#4A5E4E] hover:bg-[#D1E2D3] py-2.5 px-6 rounded-full text-xs font-semibold uppercase tracking-wider transition-smooth">
+        Amadeirados
+      </button>
+      <button data-category="floral" class="filter-btn bg-[#FAF7F2] text-[#4A5E4E] hover:bg-[#D1E2D3] py-2.5 px-6 rounded-full text-xs font-semibold uppercase tracking-wider transition-smooth">
+        Florais
+      </button>
+      <button data-category="noite" class="filter-btn bg-[#FAF7F2] text-[#4A5E4E] hover:bg-[#D1E2D3] py-2.5 px-6 rounded-full text-xs font-semibold uppercase tracking-wider transition-smooth">
+        Intensos
+      </button>
+    </div>
+
+    <!-- Catalog Grid (Dynamic Catalog Items Container, styled green grid via app.js) -->
+    <div id="catalog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Injected dynamically by JS: "fundo verde com grid" -->
+    </div>
+  </section>
+
+  <!-- FAQ Section (Accordion style) -->
+  <section id="faq" class="py-24 bg-cream-50 border-t border-sage-200/40 px-6">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center max-w-xl mx-auto mb-16" data-aos="fade-up">
+        <span class="text-xs uppercase tracking-widest text-sage-600 bg-sage-100 px-3 py-1 rounded-full font-medium">Dúvidas Frequentes</span>
+        <h2 class="text-4xl font-light text-sage-900 mt-4 mb-3">Tudo o que você precisa saber</h2>
+        <p class="text-sm text-sage-600 leading-relaxed">Transparência e suavidade em cada etapa do seu atendimento.</p>
+      </div>
+
+      <div class="space-y-4" data-aos="fade-up">
+        <details class="group bg-white rounded-2xl p-6 border border-sage-100 [&_summary::-webkit-details-marker]:hidden" open>
+          <summary class="flex justify-between items-center cursor-pointer focus:outline-none">
+            <h3 class="text-base font-semibold text-sage-800">Como funciona a compra pelo WhatsApp?</h3>
+            <span class="relative w-5 h-5 text-sage-600">
+              <svg class="absolute inset-0 w-5 h-5 opacity-100 group-open:opacity-0 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              <svg class="absolute inset-0 w-5 h-5 opacity-0 group-open:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/></svg>
+            </span>
+          </summary>
+          <p class="mt-4 text-sm text-sage-600 leading-relaxed font-light border-t border-sage-50 pt-4">
+            Após clicar no perfume de seu interesse, você será direcionado para o nosso canal de vendas privado no WhatsApp. Um consultor olfativo irá lhe enviar detalhes da fragrância, combinar frete e formas de pagamento com total atenção e tranquilidade.
+          </p>
+        </details>
+
+        <details class="group bg-white rounded-2xl p-6 border border-sage-100 [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex justify-between items-center cursor-pointer focus:outline-none">
+            <h3 class="text-base font-semibold text-sage-800">E se eu não me adaptar à fragrância?</h3>
+            <span class="relative w-5 h-5 text-sage-600">
+              <svg class="absolute inset-0 w-5 h-5 opacity-100 group-open:opacity-0 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              <svg class="absolute inset-0 w-5 h-5 opacity-0 group-open:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/></svg>
+            </span>
+          </summary>
+          <p class="mt-4 text-sm text-sage-600 leading-relaxed font-light border-t border-sage-50 pt-4">
+            Junto de cada frasco original enviamos uma pequena amostra (2ml) da mesma essência. Orientamos que você experimente primeiro pela amostra. Caso não seja o que você esperava, o frasco original lacrado pode ser devolvido sem nenhum custo adicional.
+          </p>
+        </details>
+
+        <details class="group bg-white rounded-2xl p-6 border border-sage-100 [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex justify-between items-center cursor-pointer focus:outline-none">
+            <h3 class="text-base font-semibold text-sage-800">Qual o tempo médio de fixação?</h3>
+            <span class="relative w-5 h-5 text-sage-600">
+              <svg class="absolute inset-0 w-5 h-5 opacity-100 group-open:opacity-0 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              <svg class="absolute inset-0 w-5 h-5 opacity-0 group-open:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/></svg>
+            </span>
+          </summary>
+          <p class="mt-4 text-sm text-sage-600 leading-relaxed font-light border-t border-sage-50 pt-4">
+            Nossas fragrâncias possuem concentração de Eau de Parfum (18% a 22% de óleos essenciais purificados), garantindo uma fixação confortável e sutil na pele por um período médio de 8 a 12 horas, variando conforme a tipagem da fragrância.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 px-6 max-w-5xl mx-auto" data-aos="zoom-in">
+    <div class="bg-[#2F3E33] text-cream-100 rounded-[2.5rem] p-10 md:p-16 text-center space-y-6 shadow-xl relative overflow-hidden">
+      <!-- Decorative patterns -->
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.05),transparent_40%)]"></div>
+      
+      <div class="relative z-10 max-w-2xl mx-auto space-y-6">
+        <h2 class="text-3xl md:text-5xl font-serif-elegant font-light tracking-wide">Quer um aroma exclusivo para presentear ou vestir?</h2>
+        <p class="text-sm text-sage-200/90 leading-relaxed font-light">Fale com um consultor especialista agora mesmo. Estamos disponíveis para criar uma experiência sensorial completa para você.</p>
+        
+        <div class="pt-4">
+          <a href="https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20conversar%20sobre%20as%20fragrâncias%20disponíveis." target="_blank" class="inline-flex items-center space-x-3 bg-white text-sage-800 hover:bg-sage-200 py-4.5 px-10 rounded-full font-semibold uppercase tracking-wider text-xs transition-smooth shadow-lg">
+            <span>Iniciar Conversa Particular</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-sage-900 text-sage-200 py-12 px-6 border-t border-sage-800">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="space-y-2 text-center md:text-left">
+        <p class="font-serif-elegant text-lg tracking-widest text-white">L'ESSENCE</p>
+        <p class="text-xs text-sage-400 font-light">© 2026 L'Essence Aromas. Todos os direitos reservados.</p>
+      </div>
+      <div class="flex space-x-6 text-xs text-sage-400">
+        <a href="#concept" class="hover:text-white transition-colors">Quem Somos</a>
+        <a href="#catalog" class="hover:text-white transition-colors">Produtos</a>
+        <a href="#assistant" class="hover:text-white transition-colors">Descobrir Essência</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- Application JS -->
+  <script src="app.js"></script>
+</body>
+</html>

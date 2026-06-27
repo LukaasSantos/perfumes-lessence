@@ -4,69 +4,69 @@
 const MOCK_CMS_PERFUMES = [
   {
     id: "aurora",
-    name: "Aurora Bloom",
+    name: "Lily Eau de Parfum (O Boticário)",
     category: "Floral Fresco",
-    notes: "Flor de Laranjeira, Pêra, Almíscar Branco",
-    description: "Uma brisa gentil de primavera capturada em um frasco. Ideal para dias luminosos.",
-    intensity: "Suave a Moderada",
-    price: "R$ 289,90",
-    volume: "100ml",
-    tags: ["dia", "trabalho", "fresco"]
+    notes: "Lírios, Pêra, Pimenta Rosa, Sândalo",
+    description: "Uma fragrância sofisticada que traz a pureza feminina dos lírios aliada a um toque fresco e elegante.",
+    intensity: "Moderada",
+    price: "R$ 299,90",
+    volume: "75ml",
+    tags: ["dia", "trabalho", "floral"]
   },
   {
     id: "santal-dune",
-    name: "Santal Dune",
+    name: "Malbec Gold (O Boticário)",
     category: "Amadeirado Quente",
-    notes: "Sândalo, Cardamomo, Baunilha de Madagascar",
-    description: "Confortável, aconchegante e misterioso como o pôr do sol no deserto.",
-    intensity: "Moderada a Intensa",
-    price: "R$ 319,90",
+    notes: "Notas de Âmbar, Patchouli, Cedro e Uva Gold",
+    description: "Fragrância marcante e misteriosa, sinônimo de poder e atração para noites inesquecíveis.",
+    intensity: "Intensa",
+    price: "R$ 224,90",
     volume: "100ml",
-    tags: ["noite", "encontro", "inverno"]
+    tags: ["noite", "encontro", "amadeirado"]
   },
   {
     id: "jardin-citrique",
-    name: "Jardin Citrique",
+    name: "Kaiak Aventura (Natura)",
     category: "Cítrico Herbáceo",
-    notes: "Bergamota Italiana, Capim-Limão, Alecrim",
-    description: "Energizante e revigorante. A sensação pura de folhas frescas sob o sereno da manhã.",
-    intensity: "Suave",
-    price: "R$ 259,90",
+    notes: "Acorde Cítrico, Artemísia, Almíscar e Âmbar",
+    description: "A energia vibrante do ar livre em um aroma fresco e revigorante para o seu dia a dia dinâmico.",
+    intensity: "Suave a Moderada",
+    price: "R$ 172,90",
     volume: "100ml",
     tags: ["dia", "esporte", "fresco"]
   },
   {
     id: "velvet-ambre",
-    name: "Velvet Ambre",
+    name: "Essencial Único (Natura)",
     category: "Oriental Especiado",
-    notes: "Âmbar, Canela, Patchouli, Mel Silvestre",
-    description: "Uma fragrância opulenta, aveludada e marcante que envolve os sentidos com elegância singular.",
+    notes: "Copaíba, Oud, Pimenta-Preta, Âmbar",
+    description: "Uma obra de arte olfativa marcante e opulenta para quem busca sofisticação absoluta e exclusividade.",
     intensity: "Intensa",
-    price: "R$ 349,90",
-    volume: "100ml",
+    price: "R$ 282,00",
+    volume: "90ml",
     tags: ["noite", "festa", "sofisticado"]
   },
   {
     id: "neroli-serene",
-    name: "Néroli Serene",
+    name: "Patricia Abravanel (Jequiti)",
     category: "Cítrico Floral",
-    notes: "Néroli, Lavanda Francesa, Acorde Oceânico",
-    description: "A calmaria de um fim de tarde à beira-mar. Traz paz mental e serenidade imediata.",
-    intensity: "Suave",
-    price: "R$ 279,90",
+    notes: "Flor de Laranjeira, Frutas Vermelhas, Baunilha",
+    description: "Uma mistura alegre, charmosa e cativante que equilibra notas florais com a doçura da baunilha.",
+    intensity: "Moderada",
+    price: "R$ 119,90",
     volume: "100ml",
-    tags: ["dia", "relaxar", "fresco"]
+    tags: ["dia", "relaxar", "floral"]
   },
   {
     id: "rose-oud",
-    name: "Rose Oud",
-    category: "Floral Amadeirado",
-    notes: "Rosa Damascena, Oud Exótico, Pimenta Rosa",
-    description: "A união poética entre a doçura da rosa e a profundidade da madeira oud.",
+    name: "Portiolli Black Edition (Jequiti)",
+    category: "Amadeirado Ambarado",
+    notes: "Limão Siciliano, Pimenta Preta, Cedro, Âmbar",
+    description: "Elegante e moderno, ideal para o homem que se destaca por sua personalidade forte e atitude contemporânea.",
     intensity: "Intensa",
-    price: "R$ 369,90",
+    price: "R$ 129,90",
     volume: "100ml",
-    tags: ["noite", "sofisticado", "exclusivo"]
+    tags: ["noite", "sofisticado", "amadeirado"]
   }
 ];
 

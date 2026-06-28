@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coleções - L'Essence Perfumaria</title>
+  <meta name="description" content="Explore nosso catálogo completo de perfumes e encontre sua fragrância ideal.">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: {
+              50: '#FAF8F5',
+              100: '#FAF7F2',
+              200: '#F3ECE0',
+              300: '#E9DEC9',
+            },
+            sage: {
+              50: '#F4F7F4',
+              100: '#E9EFE9',
+              200: '#D1E2D3',
+              300: '#A3C2A7',
+              600: '#4A5E4E',
+              700: '#3D4D40',
+              800: '#2F3E33',
+              900: '#242F27',
+            },
+            terracotta: {
+              100: '#F5EAE6',
+              200: '#EBCEC4',
+              500: '#C68B75',
+              600: '#A76F5B',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- AOS (Animate on Scroll) -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-cream-100 text-sage-900 overflow-x-hidden">
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 left-0 right-0 z-50 glass-nav transition-smooth">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="index.html" class="font-serif-elegant text-2xl tracking-widest text-sage-800 font-semibold">L'ESSENCE</a>
+      
+      <div class="hidden md:flex items-center space-x-8 text-sm tracking-wider font-medium text-sage-700">
+        <a href="index.html#concept" class="hover:text-sage-900 transition-colors">Conceito</a>
+        <a href="index.html#assistant" class="hover:text-sage-900 transition-colors">Descobrir Aroma</a>
+        <a href="#" class="text-sage-900 font-semibold border-b border-sage-600">Coleções</a>
+        <a href="index.html#faq" class="hover:text-sage-900 transition-colors">Dúvidas</a>
+      </div>
+
+      <div class="flex items-center space-x-2">
+        <a href="https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20um%20atendimento%20personalizado." target="_blank" class="hidden md:flex bg-sage-600 text-cream-50 hover:bg-sage-700 md:px-5 md:py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 shadow-sm items-center justify-center space-x-2">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 001.37 5.028L2 22l5.13-1.348a9.926 9.926 0 004.878 1.28c5.505 0 9.988-4.478 9.99-9.985 0-2.67-1.04-5.18-2.927-7.07C17.186 3.03 14.683 2 12.012 2zm5.82 14.072c-.32.905-1.6 1.657-2.22 1.758-.573.09-1.32.16-2.115-.094-.49-.158-1.12-.39-1.91-.734-3.37-1.465-5.52-4.883-5.69-5.109-.168-.225-1.37-1.815-1.37-3.463 0-1.648.86-2.46 1.166-2.793.305-.333.666-.416.89-.416a.65.65 0 01.46.213c.18.232.61 1.485.666 1.602.056.116.093.25.016.4-.077.15-.17.25-.336.44-.165.19-.35.43-.5.61-.17.195-.347.41-.15.75.196.34.873 1.436 1.87 2.324.997.888 1.84 1.162 2.186 1.306.346.143.55.12.753-.11.203-.23.873-1.01.11-1.258a6.37 6.37 0 00-.7-.41c-.244-.117-.49-.06-.67.016-.18.077-1.14.47-1.14.47s-.656.284-.97.1c-.314-.183-.56-.51-.81-.88-.25-.37-.876-1.57-.46-2.14.417-.57.97-.23.97-.23s.256.09.43.047c.174-.043.328-.158.4-.294.073-.136.32-.78.32-.78s.16-.39.06-.576c-.1-.186-.676-1.62-.926-2.073-.25-.453-.51-.375-.7-.375h-.6c-.23 0-.6.086-.92.436C6.776 6.848 6 7.828 6 9.818c0 1.99 1.45 3.918 1.65 4.19.2.27 2.85 4.33 6.9 6.07 3.37 1.45 4.67 1.17 6.35.29.61-.32 1.51-1.2 1.72-2.3z"/>
+          </svg>
+          <span>Atendimento</span>
+        </a>
+        
+        <!-- Hamburger Menu Button -->
+        <button id="menu-toggle" class="flex md:hidden text-sage-800 focus:outline-none p-2 hover:text-sage-600 transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Mobile Submenu -->
+    <div id="mobile-menu" class="fixed top-20 left-0 right-0 bg-[#FAF7F2]/95 backdrop-blur-md border-b border-sage-100 py-6 px-6 md:hidden flex flex-col space-y-4 shadow-lg transition-all duration-300 ease-in-out z-40 transform -translate-y-4 opacity-0 pointer-events-none">
+      <a href="index.html#concept" class="mobile-link text-lg font-medium text-sage-700 hover:text-sage-900 transition-colors py-2 border-b border-sage-50">Conceito</a>
+      <a href="index.html#assistant" class="mobile-link text-lg font-medium text-sage-700 hover:text-sage-900 transition-colors py-2 border-b border-sage-50">Descobrir Aroma</a>
+      <a href="colecoes.html" class="mobile-link text-lg font-medium text-sage-700 hover:text-sage-900 transition-colors py-2 border-b border-sage-50">Coleções</a>
+      <a href="index.html#faq" class="mobile-link text-lg font-medium text-sage-700 hover:text-sage-900 transition-colors py-2">Dúvidas</a>
+    </div>
+  </nav>
+
+  <!-- Collection Header -->
+  <section class="pt-32 pb-12 px-6 max-w-7xl mx-auto">
+    <div class="text-center max-w-2xl mx-auto space-y-4" data-aos="fade-up">
+      <span class="text-xs uppercase tracking-widest text-sage-600 bg-sage-100 px-3 py-1 rounded-full font-medium">Catálogo Geral</span>
+      <h1 class="text-4xl md:text-5xl font-light text-sage-900 mt-2">Nossas Fragrâncias</h1>
+      <p class="text-base text-sage-600 leading-relaxed font-light">Explore todos os perfumes disponíveis das principais marcas e encontre a fragrância que melhor combina com a sua personalidade.</p>
+    </div>
+
+    <!-- Search and Filters Section -->
+    <div class="mt-12 max-w-3xl mx-auto space-y-6" data-aos="fade-up">
+      <!-- Search Input -->
+      <div class="relative">
+        <input type="text" id="search-input" placeholder="Buscar por perfume, marca ou notas olfativas..." class="w-full bg-white border border-sage-200 rounded-2xl py-4 pl-12 pr-4 text-sm text-sage-800 focus:outline-none focus:border-sage-600 focus:ring-1 focus:ring-sage-600 placeholder-sage-400 transition-smooth">
+        <svg class="w-5 h-5 text-sage-400 absolute left-4 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+        </svg>
+      </div>
+
+      <!-- Category Filter Buttons -->
+      <div class="flex flex-wrap justify-center gap-3">
+        <button data-category="all" class="filter-btn bg-[#4A5E4E] text-white py-2.5 px-6 rounded-full text-xs font-semibold uppercase tracking-wider transition-smooth">
+          Todos
+        </button>
+        <button data-category="fresco" class="filter-btn bg-[#FAF7F2] text-[#4A5E4E] hover:bg-[#D1E2D3] py-2.5 px-6 rounded-full text-xs font-semibold uppercase tracking-wider transition-smooth">
+          Frescos
+        </button>
+        <button data-category="amadeirado" class="filter-btn bg-[#FAF7F2] text-[#4A5E4E] hover:bg-[#D1E2D3] py-2.5 px-6 rounded-full text-xs font-semibold uppercase tracking-wider transition-smooth">
+          Amadeirados
+        </button>
+        <button data-category="floral" class="filter-btn bg-[#FAF7F2] text-[#4A5E4E] hover:bg-[#D1E2D3] py-2.5 px-6 rounded-full text-xs font-semibold uppercase tracking-wider transition-smooth">
+          Florais
+        </button>
+        <button data-category="noite" class="filter-btn bg-[#FAF7F2] text-[#4A5E4E] hover:bg-[#D1E2D3] py-2.5 px-6 rounded-full text-xs font-semibold uppercase tracking-wider transition-smooth">
+          Intensos
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Catalog Grid Section -->
+  <section class="pb-24 px-6 max-w-7xl mx-auto">
+    <div id="catalog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Injected dynamically by JS -->
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-sage-900 text-sage-200 py-12 px-6 border-t border-sage-800">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="space-y-2 text-center md:text-left">
+        <p class="font-serif-elegant text-lg tracking-widest text-white">L'ESSENCE</p>
+        <p class="text-xs text-sage-400 font-light">© 2026 L'Essence Aromas. Todos os direitos reservados.</p>
+      </div>
+      <div class="flex space-x-6 text-xs text-sage-400">
+        <a href="index.html#concept" class="hover:text-white transition-colors">Quem Somos</a>
+        <a href="#" class="hover:text-white transition-colors">Produtos</a>
+        <a href="index.html#assistant" class="hover:text-white transition-colors">Descobrir Essência</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Button (Mobile Only) -->
+  <a href="https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20um%20atendimento%20personalizado." target="_blank" class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-3.5 rounded-full shadow-lg hover:bg-[#20ba5a] transition-all duration-300 flex md:hidden items-center justify-center hover:scale-110 active:scale-95">
+    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 001.37 5.028L2 22l5.13-1.348a9.926 9.926 0 004.878 1.28c5.505 0 9.988-4.478 9.99-9.985 0-2.67-1.04-5.18-2.927-7.07C17.186 3.03 14.683 2 12.012 2zm5.82 14.072c-.32.905-1.6 1.657-2.22 1.758-.573.09-1.32.16-2.115-.094-.49-.158-1.12-.39-1.91-.734-3.37-1.465-5.52-4.883-5.69-5.109-.168-.225-1.37-1.815-1.37-3.463 0-1.648.86-2.46 1.166-2.793.305-.333.666-.416.89-.416a.65.65 0 01.46.213c.18.232.61 1.485.666 1.602.056.116.093.25.016.4-.077.15-.17.25-.336.44-.165.19-.35.43-.5.61-.17.195-.347.41-.15.75.196.34.873 1.436 1.87 2.324.997.888 1.84 1.162 2.186 1.306.346.143.55.12.753-.11.203-.23.873-1.01.11-1.258a6.37 6.37 0 00-.7-.41c-.244-.117-.49-.06-.67.016-.18.077-1.14.47-1.14.47s-.656.284-.97.1c-.314-.183-.56-.51-.81-.88-.25-.37-.876-1.57-.46-2.14.417-.57.97-.23.97-.23s.256.09.43.047c.174-.043.328-.158.4-.294.073-.136.32-.78.32-.78s.16-.39.06-.576c-.1-.186-.676-1.62-.926-2.073-.25-.453-.51-.375-.7-.375h-.6c-.23 0-.6.086-.92.436C6.776 6.848 6 7.828 6 9.818c0 1.99 1.45 3.918 1.65 4.19.2.27 2.85 4.33 6.9 6.07 3.37 1.45 4.67 1.17 6.35.29.61-.32 1.51-1.2 1.72-2.3z"/>
+    </svg>
+  </a>
+
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- Application JS -->
+  <script src="app.js"></script>
+</body>
+</html>

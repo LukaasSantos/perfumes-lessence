@@ -1,9 +1,29 @@
 /* styles.css */
 
+html {
+  font-size: 14px; /* Default is 16px. Decreasing to 14px scales down all rem-based sizes (fonts, margins, paddings, gaps, etc.) */
+  overflow-x: hidden;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 14.5px;
+  }
+}
+
+@media (min-width: 1200px) {
+  html {
+    font-size: 15px;
+  }
+}
+
 /* Custom fonts styling fallback/helper */
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 h1, h2, h3, .font-serif-elegant {

@@ -84,19 +84,163 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  renderCatalog(MOCK_CMS_PERFUMES);
-  setupFilterButtons();
-  setupQuiz();
+  // Auto-hide header configuration
+  setupAutoHideHeader();
+
+  // Mobile menu configuration
+  setupMobileMenu();
+
+  // Detect which page we are on
+  const isCollectionsPage = window.location.pathname.includes("colecoes.html");
+
+  if (isCollectionsPage) {
+    renderCatalog(MOCK_CMS_PERFUMES);
+    setupFilterButtons(false);
+    setupSearch();
+  } else {
+    // Show only first 3 featured perfumes on homepage
+    renderCatalog(MOCK_CMS_PERFUMES, 3);
+    setupFilterButtons(true);
+    setupQuiz();
+    startHeroSlideshow();
+  }
 });
 
+// Setup Mobile Menu Toggle Behavior
+function setupMobileMenu() {
+  const toggleBtn = document.getElementById("menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const menuIcon = document.getElementById("menu-icon");
+  const mobileLinks = document.querySelectorAll(".mobile-link");
+
+  if (!toggleBtn || !mobileMenu) return;
+
+  function closeMenu() {
+    mobileMenu.classList.add("opacity-0", "-translate-y-4", "pointer-events-none");
+    mobileMenu.classList.remove("opacity-100", "translate-y-0", "pointer-events-auto");
+    if (menuIcon) {
+      menuIcon.setAttribute("d", "M4 6h16M4 12h16M4 18h16"); // Hamburger icon
+    }
+  }
+
+  function openMenu() {
+    mobileMenu.classList.remove("opacity-0", "-translate-y-4", "pointer-events-none");
+    mobileMenu.classList.add("opacity-100", "translate-y-0", "pointer-events-auto");
+    if (menuIcon) {
+      menuIcon.setAttribute("d", "M6 18L18 6M6 6l12 12"); // X close icon
+    }
+  }
+
+  toggleBtn.addEventListener("click", () => {
+    const isClosed = mobileMenu.classList.contains("pointer-events-none");
+    if (isClosed) {
+      openMenu();
+    } else {
+      closeMenu();
+    }
+  });
+
+  // Close menu when clicking any link
+  mobileLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      closeMenu();
+    });
+  });
+}
+
+// Auto-hide Header (Smart Header) on scroll
+function setupAutoHideHeader() {
+  const nav = document.querySelector("nav");
+  if (!nav) return;
+
+  let lastScrollY = window.scrollY;
+
+  window.addEventListener("scroll", () => {
+    const currentScrollY = window.scrollY;
+
+    // Don't hide if scroll is near top (less than 80px)
+    if (currentScrollY < 80) {
+      nav.classList.remove("-translate-y-full");
+    } else if (currentScrollY > lastScrollY) {
+      // Scrolling down - hide
+      nav.classList.add("-translate-y-full");
+    } else {
+      // Scrolling up - show
+      nav.classList.remove("-translate-y-full");
+    }
+
+    lastScrollY = currentScrollY;
+  });
+}
+
+// Hero slideshow cycling among catalog products
+function startHeroSlideshow() {
+  const card = document.getElementById("hero-perfume-card");
+  if (!card) return;
+
+  const numEl = document.getElementById("hero-perfume-number");
+  const bottleTextEl = document.getElementById("hero-bottle-text");
+  const volumeEl = document.getElementById("hero-bottle-volume");
+  const titleEl = document.getElementById("hero-perfume-title");
+  const subtitleEl = document.getElementById("hero-perfume-subtitle");
+
+  let currentIndex = 0;
+
+  // Rich premium gradients matching catalog scent vibes
+  const gradients = [
+    "from-sage-200 to-terracotta-200", // Lily
+    "from-terracotta-200 to-sage-300", // Malbec
+    "from-sage-100 to-sage-300",       // Kaiak
+    "from-terracotta-100 to-terracotta-300", // Essencial
+    "from-cream-200 to-terracotta-200", // Patricia
+    "from-sage-200 to-sage-900/20"      // Portiolli
+  ];
+
+  setInterval(() => {
+    // Add fade and shrink transform
+    card.classList.add("opacity-0", "scale-95");
+
+    setTimeout(() => {
+      currentIndex = (currentIndex + 1) % MOCK_CMS_PERFUMES.length;
+      const perfume = MOCK_CMS_PERFUMES[currentIndex];
+
+      // Update text details
+      numEl.textContent = `N° 0${currentIndex + 1}`;
+      
+      const shortName = perfume.name.split(" ")[0].toUpperCase();
+      bottleTextEl.textContent = shortName;
+      
+      volumeEl.textContent = perfume.volume.toUpperCase();
+      titleEl.textContent = perfume.name;
+      
+      // Extract brand/origin from name in parentheses e.g. "O Boticário"
+      const brandMatch = perfume.name.match(/\(([^)]+)\)/);
+      const brand = brandMatch ? brandMatch[1] : "";
+      subtitleEl.textContent = `${perfume.notes} (${brand})`;
+
+      // Update background gradient
+      gradients.forEach(g => {
+        g.split(" ").forEach(cls => card.classList.remove(cls));
+      });
+      const newGrad = gradients[currentIndex];
+      newGrad.split(" ").forEach(cls => card.classList.add(cls));
+
+      // Fade back in with pop scale transition
+      card.classList.remove("opacity-0", "scale-95");
+    }, 500);
+  }, 5000); // cycle every 5 seconds
+}
+
 // 3. Render Catalog Items
-function renderCatalog(perfumes) {
+function renderCatalog(perfumes, limit = null) {
   const container = document.getElementById("catalog-grid");
   if (!container) return;
 
   container.innerHTML = "";
 
-  if (perfumes.length === 0) {
+  const itemsToRender = limit ? perfumes.slice(0, limit) : perfumes;
+
+  if (itemsToRender.length === 0) {
     container.innerHTML = `
       <div class="col-span-full text-center py-12 text-sage-600">
         <p class="font-serif-elegant text-xl">Nenhum perfume encontrado com estas características.</p>
@@ -105,40 +249,40 @@ function renderCatalog(perfumes) {
     return;
   }
 
-  perfumes.forEach((perfume, idx) => {
-    // Generate beautiful catalog cards with green grid pattern as requested
+  itemsToRender.forEach((perfume, idx) => {
+    // Generate beautiful scaled-down catalog cards with green grid pattern as requested
     const card = document.createElement("div");
-    card.className = "catalog-item-bg rounded-2xl p-6 md:p-8 flex flex-col justify-between text-white border border-white/5";
+    card.className = "catalog-item-bg rounded-2xl p-5 md:p-6 flex flex-col justify-between text-white border border-white/5";
     card.setAttribute("data-aos", "fade-up");
     card.setAttribute("data-aos-delay", `${idx * 100}`);
 
     card.innerHTML = `
       <div>
-        <div class="flex justify-between items-start mb-6">
-          <span class="text-xs uppercase tracking-widest text-[#D1E2D3] bg-white/10 px-3 py-1 rounded-full backdrop-blur-sm font-semibold">
+        <div class="flex justify-between items-start mb-4">
+          <span class="text-[10px] uppercase tracking-widest text-[#D1E2D3] bg-white/10 px-2.5 py-0.5 rounded-full backdrop-blur-sm font-semibold">
             ${perfume.category}
           </span>
-          <span class="text-sm font-light text-white/80">${perfume.volume}</span>
+          <span class="text-xs font-light text-white/80">${perfume.volume}</span>
         </div>
         
-        <h3 class="text-2xl font-serif-elegant mb-3 text-white tracking-wide">${perfume.name}</h3>
-        <p class="text-sm text-[#D1E2D3]/90 font-light mb-4 leading-relaxed">${perfume.description}</p>
+        <h3 class="text-xl font-serif-elegant mb-2 text-white tracking-wide">${perfume.name}</h3>
+        <p class="text-[13px] text-[#D1E2D3]/90 font-light mb-4 leading-relaxed">${perfume.description}</p>
         
-        <div class="space-y-2 mb-6">
-          <p class="text-xs text-[#D1E2D3] uppercase tracking-wider">Notas Olfativas:</p>
-          <p class="text-sm text-white/95 font-medium italic">${perfume.notes}</p>
+        <div class="space-y-1 mb-5">
+          <p class="text-[10px] text-[#D1E2D3] uppercase tracking-wider">Notas Olfativas:</p>
+          <p class="text-xs text-white/95 font-medium italic">${perfume.notes}</p>
         </div>
       </div>
       
       <div>
-        <div class="border-t border-white/10 pt-4 mb-4 flex justify-between items-baseline">
-          <span class="text-xs text-[#D1E2D3]/70">Intensidade: ${perfume.intensity}</span>
-          <span class="text-xl font-semibold text-white">${perfume.price}</span>
+        <div class="border-t border-white/10 pt-3 mb-3 flex justify-between items-baseline">
+          <span class="text-[11px] text-[#D1E2D3]/70">Intensidade: ${perfume.intensity}</span>
+          <span class="text-lg font-semibold text-white">${perfume.price}</span>
         </div>
         
-        <button onclick="contactWhatsApp('${perfume.name}')" class="w-full bg-[#FAF7F2] text-[#2F3E33] hover:bg-[#D1E2D3] hover:text-[#2F3E33] font-medium py-3 px-4 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2 group">
+        <button onclick="contactWhatsApp('${perfume.name}')" class="w-full bg-[#FAF7F2] text-[#2F3E33] hover:bg-[#D1E2D3] hover:text-[#2F3E33] text-sm font-medium py-2.5 px-3 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2 group">
           <span>Conversar no WhatsApp</span>
-          <svg class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
           </svg>
         </button>
@@ -149,8 +293,11 @@ function renderCatalog(perfumes) {
   });
 }
 
+// State variable to track currently selected category filter
+let activeCategory = "all";
+
 // 4. Filter Buttons Logic
-function setupFilterButtons() {
+function setupFilterButtons(isHomepage = false) {
   const buttons = document.querySelectorAll(".filter-btn");
   buttons.forEach(button => {
     button.addEventListener("click", () => {
@@ -164,14 +311,54 @@ function setupFilterButtons() {
       button.classList.remove("bg-[#FAF7F2]", "text-[#4A5E4E]");
       button.classList.add("bg-[#4A5E4E]", "text-white");
 
-      const category = button.getAttribute("data-category");
-      if (category === "all") {
-        renderCatalog(MOCK_CMS_PERFUMES);
-      } else {
-        const filtered = MOCK_CMS_PERFUMES.filter(p => p.category.toLowerCase().includes(category) || p.tags.includes(category));
-        renderCatalog(filtered);
+      activeCategory = button.getAttribute("data-category");
+      let filtered = MOCK_CMS_PERFUMES;
+      if (activeCategory !== "all") {
+        filtered = MOCK_CMS_PERFUMES.filter(p => p.category.toLowerCase().includes(activeCategory) || p.tags.includes(activeCategory));
       }
+
+      // If on collections page, also apply search filter
+      if (!isHomepage) {
+        const searchInput = document.getElementById("search-input");
+        if (searchInput && searchInput.value.trim() !== "") {
+          const query = searchInput.value.toLowerCase().trim();
+          filtered = filtered.filter(p => 
+            p.name.toLowerCase().includes(query) || 
+            p.notes.toLowerCase().includes(query) || 
+            p.description.toLowerCase().includes(query) ||
+            p.category.toLowerCase().includes(query)
+          );
+        }
+      }
+
+      renderCatalog(filtered, isHomepage ? 3 : null);
     });
+  });
+}
+
+// Setup live search for collections page
+function setupSearch() {
+  const searchInput = document.getElementById("search-input");
+  if (!searchInput) return;
+
+  searchInput.addEventListener("input", () => {
+    const query = searchInput.value.toLowerCase().trim();
+    
+    let filtered = MOCK_CMS_PERFUMES;
+    if (activeCategory !== "all") {
+      filtered = MOCK_CMS_PERFUMES.filter(p => p.category.toLowerCase().includes(activeCategory) || p.tags.includes(activeCategory));
+    }
+
+    if (query !== "") {
+      filtered = filtered.filter(p => 
+        p.name.toLowerCase().includes(query) || 
+        p.notes.toLowerCase().includes(query) || 
+        p.description.toLowerCase().includes(query) ||
+        p.category.toLowerCase().includes(query)
+      );
+    }
+
+    renderCatalog(filtered);
   });
 }
 

@@ -1,9 +1,9 @@
 // app.js
 
-// 1. Simulated Headless CMS Product Data
+// 1. Simulated Headless CMS Product Data (Fallback)
 const MOCK_CMS_PERFUMES = [
   {
-    id: "aurora",
+    id: "lily-edp",
     name: "Lily Eau de Parfum (O Boticário)",
     category: "Floral Fresco",
     notes: "Lírios, Pêra, Pimenta Rosa, Sândalo",
@@ -14,7 +14,7 @@ const MOCK_CMS_PERFUMES = [
     tags: ["dia", "trabalho", "floral"]
   },
   {
-    id: "santal-dune",
+    id: "malbec-gold",
     name: "Malbec Gold (O Boticário)",
     category: "Amadeirado Quente",
     notes: "Notas de Âmbar, Patchouli, Cedro e Uva Gold",
@@ -25,7 +25,7 @@ const MOCK_CMS_PERFUMES = [
     tags: ["noite", "encontro", "amadeirado"]
   },
   {
-    id: "jardin-citrique",
+    id: "kaiak-aventura",
     name: "Kaiak Aventura (Natura)",
     category: "Cítrico Herbáceo",
     notes: "Acorde Cítrico, Artemísia, Almíscar e Âmbar",
@@ -36,7 +36,7 @@ const MOCK_CMS_PERFUMES = [
     tags: ["dia", "esporte", "fresco"]
   },
   {
-    id: "velvet-ambre",
+    id: "essencial-unico",
     name: "Essencial Único (Natura)",
     category: "Oriental Especiado",
     notes: "Copaíba, Oud, Pimenta-Preta, Âmbar",
@@ -47,7 +47,7 @@ const MOCK_CMS_PERFUMES = [
     tags: ["noite", "festa", "sofisticado"]
   },
   {
-    id: "neroli-serene",
+    id: "patricia-abravanel",
     name: "Patricia Abravanel (Jequiti)",
     category: "Cítrico Floral",
     notes: "Flor de Laranjeira, Frutas Vermelhas, Baunilha",
@@ -58,7 +58,7 @@ const MOCK_CMS_PERFUMES = [
     tags: ["dia", "relaxar", "floral"]
   },
   {
-    id: "rose-oud",
+    id: "portiolli-black",
     name: "Portiolli Black Edition (Jequiti)",
     category: "Amadeirado Ambarado",
     notes: "Limão Siciliano, Pimenta Preta, Cedro, Âmbar",
@@ -70,11 +70,44 @@ const MOCK_CMS_PERFUMES = [
   }
 ];
 
+// Global catalog that will be populated with Scraper data + CMS quantities
+let perfumesCatalog = [];
+
 // WhatsApp number configuration
 const WHATSAPP_NUMBER = "5511999999999"; // Replace with real number
 
-// 2. Initialize AOS (Animate on Scroll)
-document.addEventListener("DOMContentLoaded", () => {
+// Load Perfumes Data from JSON and merge with CMS quantity
+async function loadPerfumesData() {
+  try {
+    const response = await fetch('./perfumes_data.json');
+    if (!response.ok) throw new Error("Não foi possível ler perfumes_data.json");
+    const scrapedData = await response.json();
+    
+    // Simulate stock quantities coming from a Headless CMS
+    const cmsStock = {};
+    scrapedData.forEach(perfume => {
+      // Each perfume has a quantity managed in the CMS (some out of stock, some high stock)
+      cmsStock[perfume.id] = Math.floor(Math.random() * 10);
+    });
+
+    perfumesCatalog = scrapedData.map(perfume => ({
+      ...perfume,
+      quantity: cmsStock[perfume.id] !== undefined ? cmsStock[perfume.id] : 0
+    }));
+
+    console.log("[CMS & SCRAPER] Banco de dados integrado carregado com sucesso.");
+
+  } catch (error) {
+    console.warn("[CMS & SCRAPER] Usando dados locais como fallback:", error);
+    perfumesCatalog = MOCK_CMS_PERFUMES.map(p => ({
+      ...p,
+      quantity: 5 // Default fallback quantity
+    }));
+  }
+}
+
+// 2. Initialize AOS (Animate on Scroll) and dynamic content
+document.addEventListener("DOMContentLoaded", async () => {
   if (typeof AOS !== 'undefined') {
     AOS.init({
       duration: 800,
@@ -90,16 +123,19 @@ document.addEventListener("DOMContentLoaded", () => {
   // Mobile menu configuration
   setupMobileMenu();
 
+  // Load the scraper and CMS data
+  await loadPerfumesData();
+
   // Detect which page we are on
   const isCollectionsPage = window.location.pathname.includes("colecoes.html");
 
   if (isCollectionsPage) {
-    renderCatalog(MOCK_CMS_PERFUMES);
+    renderCatalog(perfumesCatalog);
     setupFilterButtons(false);
     setupSearch();
   } else {
     // Show only first 3 featured perfumes on homepage
-    renderCatalog(MOCK_CMS_PERFUMES, 3);
+    renderCatalog(perfumesCatalog, 3);
     setupFilterButtons(true);
     setupQuiz();
     startHeroSlideshow();
@@ -176,7 +212,7 @@ function setupAutoHideHeader() {
 // Hero slideshow cycling among catalog products
 function startHeroSlideshow() {
   const card = document.getElementById("hero-perfume-card");
-  if (!card) return;
+  if (!card || perfumesCatalog.length === 0) return;
 
   const numEl = document.getElementById("hero-perfume-number");
   const bottleTextEl = document.getElementById("hero-bottle-text");
@@ -188,12 +224,12 @@ function startHeroSlideshow() {
 
   // Rich premium gradients matching catalog scent vibes
   const gradients = [
-    "from-sage-200 to-terracotta-200", // Lily
-    "from-terracotta-200 to-sage-300", // Malbec
-    "from-sage-100 to-sage-300",       // Kaiak
-    "from-terracotta-100 to-terracotta-300", // Essencial
-    "from-cream-200 to-terracotta-200", // Patricia
-    "from-sage-200 to-sage-900/20"      // Portiolli
+    "from-sage-200 to-terracotta-200", 
+    "from-terracotta-200 to-sage-300", 
+    "from-sage-100 to-sage-300",       
+    "from-terracotta-100 to-terracotta-300",
+    "from-cream-200 to-terracotta-200", 
+    "from-sage-200 to-sage-900/20"      
   ];
 
   setInterval(() => {
@@ -201,11 +237,11 @@ function startHeroSlideshow() {
     card.classList.add("opacity-0", "scale-95");
 
     setTimeout(() => {
-      currentIndex = (currentIndex + 1) % MOCK_CMS_PERFUMES.length;
-      const perfume = MOCK_CMS_PERFUMES[currentIndex];
+      currentIndex = (currentIndex + 1) % perfumesCatalog.length;
+      const perfume = perfumesCatalog[currentIndex];
 
       // Update text details
-      numEl.textContent = `N° 0${currentIndex + 1}`;
+      numEl.textContent = `N° 0${(currentIndex % 9) + 1}`;
       
       const shortName = perfume.name.split(" ")[0].toUpperCase();
       bottleTextEl.textContent = shortName;
@@ -222,7 +258,7 @@ function startHeroSlideshow() {
       gradients.forEach(g => {
         g.split(" ").forEach(cls => card.classList.remove(cls));
       });
-      const newGrad = gradients[currentIndex];
+      const newGrad = gradients[currentIndex % gradients.length];
       newGrad.split(" ").forEach(cls => card.classList.add(cls));
 
       // Fade back in with pop scale transition
@@ -250,11 +286,12 @@ function renderCatalog(perfumes, limit = null) {
   }
 
   itemsToRender.forEach((perfume, idx) => {
-    // Generate beautiful scaled-down catalog cards with green grid pattern as requested
     const card = document.createElement("div");
     card.className = "catalog-item-bg rounded-2xl p-5 md:p-6 flex flex-col justify-between text-white border border-white/5";
     card.setAttribute("data-aos", "fade-up");
     card.setAttribute("data-aos-delay", `${idx * 100}`);
+
+    const hasStock = perfume.quantity > 0;
 
     card.innerHTML = `
       <div>
@@ -265,8 +302,17 @@ function renderCatalog(perfumes, limit = null) {
           <span class="text-xs font-light text-white/80">${perfume.volume}</span>
         </div>
         
-        <h3 class="text-xl font-serif-elegant mb-2 text-white tracking-wide">${perfume.name}</h3>
-        <p class="text-[13px] text-[#D1E2D3]/90 font-light mb-4 leading-relaxed">${perfume.description}</p>
+        <div class="flex items-start space-x-4 mb-4">
+          ${perfume.image ? `
+            <div class="flex-shrink-0">
+              <img src="${perfume.image}" alt="${perfume.name}" class="object-contain rounded-xl border border-white/10 shadow-md bg-white/5 transition-transform duration-300 hover:scale-105" style="width: 10rem; height: auto;" onerror="this.style.display='none'">
+            </div>
+          ` : ''}
+          <div class="flex flex-col">
+            <h3 class="text-lg md:text-xl font-serif-elegant text-white tracking-wide leading-tight mb-2">${perfume.name}</h3>
+            <p class="text-[13px] text-[#D1E2D3]/90 font-light leading-relaxed">${perfume.description}</p>
+          </div>
+        </div>
         
         <div class="space-y-1 mb-5">
           <p class="text-[10px] text-[#D1E2D3] uppercase tracking-wider">Notas Olfativas:</p>
@@ -275,13 +321,20 @@ function renderCatalog(perfumes, limit = null) {
       </div>
       
       <div>
-        <div class="border-t border-white/10 pt-3 mb-3 flex justify-between items-baseline">
+        <div class="border-t border-white/10 pt-3 mb-1 flex justify-between items-baseline">
           <span class="text-[11px] text-[#D1E2D3]/70">Intensidade: ${perfume.intensity}</span>
           <span class="text-lg font-semibold text-white">${perfume.price}</span>
         </div>
         
-        <button onclick="contactWhatsApp('${perfume.name}')" class="w-full bg-[#FAF7F2] text-[#2F3E33] hover:bg-[#D1E2D3] hover:text-[#2F3E33] text-sm font-medium py-2.5 px-3 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2 group">
-          <span>Conversar no WhatsApp</span>
+        <div class="mb-3 flex justify-between items-baseline">
+          <span class="text-[10px] text-[#D1E2D3]/50">Estoque (CMS):</span>
+          <span class="text-xs font-medium ${hasStock ? 'text-emerald-300' : 'text-rose-300'}">
+            ${hasStock ? `${perfume.quantity} unidades` : 'Esgotado'}
+          </span>
+        </div>
+        
+        <button onclick="contactWhatsApp('${perfume.name}')" class="w-full bg-[#FAF7F2] text-[#2F3E33] hover:bg-[#D1E2D3] hover:text-[#2F3E33] text-sm font-medium py-2.5 px-3 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2 group ${!hasStock ? 'opacity-60 cursor-not-allowed' : ''}" ${!hasStock ? 'disabled' : ''}>
+          <span>${hasStock ? 'Conversar no WhatsApp' : 'Indisponível'}</span>
           <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
           </svg>
@@ -312,9 +365,9 @@ function setupFilterButtons(isHomepage = false) {
       button.classList.add("bg-[#4A5E4E]", "text-white");
 
       activeCategory = button.getAttribute("data-category");
-      let filtered = MOCK_CMS_PERFUMES;
+      let filtered = perfumesCatalog;
       if (activeCategory !== "all") {
-        filtered = MOCK_CMS_PERFUMES.filter(p => p.category.toLowerCase().includes(activeCategory) || p.tags.includes(activeCategory));
+        filtered = perfumesCatalog.filter(p => p.category.toLowerCase().includes(activeCategory) || p.tags.includes(activeCategory));
       }
 
       // If on collections page, also apply search filter
@@ -344,9 +397,9 @@ function setupSearch() {
   searchInput.addEventListener("input", () => {
     const query = searchInput.value.toLowerCase().trim();
     
-    let filtered = MOCK_CMS_PERFUMES;
+    let filtered = perfumesCatalog;
     if (activeCategory !== "all") {
-      filtered = MOCK_CMS_PERFUMES.filter(p => p.category.toLowerCase().includes(activeCategory) || p.tags.includes(activeCategory));
+      filtered = perfumesCatalog.filter(p => p.category.toLowerCase().includes(activeCategory) || p.tags.includes(activeCategory));
     }
 
     if (query !== "") {
@@ -392,26 +445,26 @@ function setupQuiz() {
 }
 
 function evaluateQuiz() {
-  if (!quizAnswers.moment || !quizAnswers.style) return;
+  if (!quizAnswers.moment || !quizAnswers.style || perfumesCatalog.length === 0) return;
 
   const resultContainer = document.getElementById("quiz-result");
   if (!resultContainer) return;
 
   // Simple recommendation algorithm
-  let recommendation = MOCK_CMS_PERFUMES[0]; // fallback
+  let recommendation = perfumesCatalog[0]; // fallback
 
   if (quizAnswers.moment === "dia") {
     if (quizAnswers.style === "casual") {
-      recommendation = MOCK_CMS_PERFUMES.find(p => p.id === "jardin-citrique") || recommendation;
+      recommendation = perfumesCatalog.find(p => p.id.includes("kaiak") || p.id.includes("virtude")) || recommendation;
     } else {
-      recommendation = MOCK_CMS_PERFUMES.find(p => p.id === "aurora") || recommendation;
+      recommendation = perfumesCatalog.find(p => p.id.includes("lily") || p.id.includes("patricia")) || recommendation;
     }
   } else {
     // noite
     if (quizAnswers.style === "elegante") {
-      recommendation = MOCK_CMS_PERFUMES.find(p => p.id === "rose-oud") || recommendation;
+      recommendation = perfumesCatalog.find(p => p.id.includes("portiolli") || p.id.includes("essencial")) || recommendation;
     } else {
-      recommendation = MOCK_CMS_PERFUMES.find(p => p.id === "santal-dune") || recommendation;
+      recommendation = perfumesCatalog.find(p => p.id.includes("malbec") || p.id.includes("intima")) || recommendation;
     }
   }
 

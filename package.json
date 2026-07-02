@@ -1,0 +1,14 @@
+{
+  "name": "perfumaria-scraper",
+  "version": "1.0.0",
+  "description": "Scraper para o Fragrantica.com",
+  "main": "scraper.js",
+  "type": "module",
+  "scripts": {
+    "scrape": "node scraper.js"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "puppeteer": "^22.12.0"
+  }
+}

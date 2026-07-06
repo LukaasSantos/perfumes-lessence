@@ -1,189 +1,239 @@
 [
   {
-    "id": "aliger-38441",
-    "name": "Aliger 5 (Natura)",
-    "category": "Floral Amadeirado",
-    "notes": "Notas florais e cítricas",
-    "description": "Uma criação olfativa exclusiva com a sofisticação da marca.",
-    "intensity": "Intensa",
-    "price": "R$ 195,15",
-    "volume": "75ml",
-    "image": "https://fimgs.net/mdimg/perfume-thumbs/m.38441.jpg",
-    "tags": [
-      "intensa",
-      "floral"
-    ]
-  },
-  {
-    "id": "ares-de-shiraz-34006",
-    "name": "Ares de Shiraz 12 (Natura)",
-    "category": "Floral Amadeirado",
-    "notes": "Notas florais e cítricas",
-    "description": "Uma criação olfativa exclusiva com a sofisticação da marca.",
-    "intensity": "Intensa",
-    "price": "R$ 269,79",
-    "volume": "100ml",
-    "image": "https://fimgs.net/mdimg/perfume-thumbs/m.34006.jpg",
-    "tags": [
-      "intensa",
-      "floral"
-    ]
-  },
-  {
-    "id": "atmos-36652",
-    "name": "Atmos 26 (Natura)",
-    "category": "Floral Amadeirado",
-    "notes": "Notas florais e cítricas",
-    "description": "Uma criação olfativa exclusiva com a sofisticação da marca.",
-    "intensity": "Suave",
-    "price": "R$ 112,73",
-    "volume": "90ml",
-    "image": "https://fimgs.net/mdimg/perfume-thumbs/m.36652.jpg",
-    "tags": [
-      "suave",
-      "floral"
-    ]
-  },
-  {
-    "id": "aura-alba-104821",
-    "name": "Aura Alba 214 (Natura)",
-    "category": "Floral Amadeirado",
-    "notes": "Notas florais e cítricas",
-    "description": "Uma criação olfativa exclusiva com a sofisticação da marca.",
-    "intensity": "Suave",
-    "price": "R$ 220,52",
-    "volume": "90ml",
-    "image": "https://fimgs.net/mdimg/perfume-thumbs/m.104821.jpg",
-    "tags": [
-      "suave",
-      "floral"
-    ]
-  },
-  {
-    "id": "carambola-para-boas-energias-123628",
-    "name": "Carambola Para Boas Energias 1 (Natura)",
-    "category": "Floral Amadeirado",
-    "notes": "Notas florais e cítricas",
-    "description": "Uma criação olfativa exclusiva com a sofisticação da marca.",
-    "intensity": "Suave",
-    "price": "R$ 217,94",
-    "volume": "100ml",
-    "image": "https://fimgs.net/mdimg/perfume-thumbs/m.123628.jpg",
-    "tags": [
-      "suave",
-      "floral"
-    ]
-  },
-  {
     "id": "boticario-lily-edp",
     "name": "Lily Eau de Parfum (O Boticário)",
-    "category": "Floral Fresco",
+    "category": "Produtos",
+    "type": "Perfumes",
+    "brand": "O Boticário",
+    "line": "Lily",
     "notes": "Lírios, Pêra, Pimenta Rosa, Sândalo",
     "description": "Uma fragrância sofisticada que traz a pureza feminina dos lírios aliada a um toque fresco e elegante.",
-    "intensity": "Moderada",
+    "intensity": "Alta Fixação",
     "price": "R$ 299,90",
-    "volume": "75ml",
+    "volume": "Linha Premium",
     "tags": [
       "dia",
       "trabalho",
-      "floral"
+      "floral",
+      "perfumes"
     ],
-    "image": "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=400&q=80"
+    "image": "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=400&q=80",
+    "variations": ["Clássico", "L'Eau", "Satin"],
+    "sizes": ["75ml", "100ml"]
   },
   {
     "id": "boticario-malbec-gold",
     "name": "Malbec Gold (O Boticário)",
-    "category": "Amadeirado Quente",
+    "category": "Produtos",
+    "type": "Perfumes",
+    "brand": "O Boticário",
+    "line": "Malbec",
     "notes": "Notas de Âmbar, Patchouli, Cedro e Uva Gold",
-    "description": "Fragrância marcante e misteriosa, sinônimo de poder e atração para noites inesquecíveis.",
-    "intensity": "Intensa",
+    "description": "Fragrância marcante e misteriosa, sinônimo de power e atração para noites inesquecíveis.",
+    "intensity": "Forte Fixação",
     "price": "R$ 224,90",
-    "volume": "100ml",
+    "volume": "Frasco de Vidro",
     "tags": [
       "noite",
       "encontro",
-      "amadeirado"
+      "amadeirado",
+      "perfumes"
     ],
-    "image": "https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=400&q=80"
+    "image": "https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=400&q=80",
+    "variations": ["Gold Clássico", "Gold Intense"],
+    "sizes": ["100ml", "150ml"]
   },
   {
     "id": "boticario-floratta-red",
     "name": "Floratta Red (O Boticário)",
-    "category": "Floriental Frutal",
+    "category": "Produtos",
+    "type": "Perfumes",
+    "brand": "O Boticário",
+    "line": "Floratta",
     "notes": "Flor de Maçã, Frutas Vermelhas, Musk",
     "description": "Inspirada na maçã de Vermont, essa fragrância traz a doçura e a sensualidade feminina em perfeita harmonia.",
-    "intensity": "Moderada",
+    "intensity": "Feminina e Marcante",
     "price": "R$ 149,90",
-    "volume": "75ml",
+    "volume": "Frasco de Vidro",
     "tags": [
       "dia",
       "noite",
-      "romantico"
+      "romantico",
+      "perfumes"
     ],
-    "image": "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=400&q=80"
+    "image": "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=400&q=80",
+    "variations": ["Red Clássico"],
+    "sizes": ["75ml"]
   },
   {
-    "id": "jequiti-patricia-abravanel",
-    "name": "Patricia Abravanel (Jequiti)",
-    "category": "Cítrico Floral",
-    "notes": "Flor de Laranjeira, Frutas Vermelhas, Baunilha",
-    "description": "Uma mistura alegre, charmosa e cativante que equilibra notas florais com a doçura da baunilha.",
-    "intensity": "Moderada",
-    "price": "R$ 119,90",
-    "volume": "100ml",
+    "id": "creme-nativa-spa",
+    "name": "Creme Hidratante Nativa SPA (O Boticário)",
+    "category": "Produtos",
+    "type": "Cremes",
+    "brand": "O Boticário",
+    "line": "Nativa SPA",
+    "notes": "Hidratação de Quinoa & Óleo Purificado",
+    "description": "Nutrição de alta performance que activa o brilho natural e deixa a pele macia com toque aveludado.",
+    "intensity": "Nativa SPA",
+    "price": "R$ 69,90",
+    "volume": "Frasco Premium",
     "tags": [
       "dia",
-      "relaxar",
-      "floral"
-    ],
-    "image": "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=400&q=80"
-  },
-  {
-    "id": "jequiti-portiolli-black",
-    "name": "Portiolli Black Edition (Jequiti)",
-    "category": "Amadeirado Ambarado",
-    "notes": "Limão Siciliano, Pimenta Preta, Cedro, Âmbar",
-    "description": "Elegante e moderno, ideal para o homem que se destaca por sua personalidade forte e atitude contemporânea.",
-    "intensity": "Intensa",
-    "price": "R$ 129,90",
-    "volume": "100ml",
-    "tags": [
       "noite",
-      "sofisticado",
-      "amadeirado"
+      "cremes",
+      "hidratacao"
     ],
-    "image": "https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=400&q=80"
+    "image": "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?auto=format&fit=crop&w=400&q=80",
+    "variations": ["Ameixa", "Karité", "Ameixa Negra", "Quinoa"],
+    "sizes": ["200ml", "400ml"]
   },
   {
-    "id": "demillus-virtude",
-    "name": "Virtude (DeMillus)",
-    "category": "Floral Frutal",
-    "notes": "Pêssego, Jasmim, Baunilha, Âmbar",
-    "description": "Uma fragrância clássica e romântica que celebra a feminilidade com doçura e elegância atemporais.",
-    "intensity": "Moderada",
-    "price": "R$ 89,90",
-    "volume": "50ml",
+    "id": "creme-tododia-natura",
+    "name": "Cremes Hidratantes Tododia (Natura)",
+    "category": "Produtos",
+    "type": "Cremes",
+    "brand": "Natura",
+    "line": "Tododia",
+    "notes": "Nutrição Prebiótica inteligente",
+    "description": "Fórmula inteligente que se adapta às necessidades da sua pele. Diversas fragrâncias para o seu ritual diário.",
+    "intensity": "Tododia",
+    "price": "R$ 65,90",
+    "volume": "Pote Prático",
     "tags": [
       "dia",
-      "floral",
-      "romantico"
+      "cremes",
+      "hidratacao"
     ],
-    "image": "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=400&q=80"
+    "image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=400&q=80",
+    "variations": ["Cereja e Avelã", "Morango e Peônia", "Algodão Macio", "Macadâmia Nutritiva"],
+    "sizes": ["200ml", "400ml"]
   },
   {
-    "id": "demillus-intima",
-    "name": "Íntima (DeMillus)",
-    "category": "Chypre Floral",
-    "notes": "Rosas, Almíscar, Sândalo, Bergamota",
-    "description": "Fragrância marcante e envolvente com acordes florais e amadeirados para momentos especiais.",
-    "intensity": "Intensa",
-    "price": "R$ 95,00",
-    "volume": "60ml",
+    "id": "cesta-cafe-premium",
+    "name": "Cesta Amanhecer",
+    "category": "Cestas",
+    "type": "Diversos",
+    "brand": "Diversos",
+    "line": "Cestas de Café",
+    "notes": "Pães, Frutas, Cafés especiais, Doces Finos",
+    "description": "Surpreenda quem você ama com uma cesta de café da manhã repleta de delícias frescas e embalagem decorativa.",
+    "intensity": "Café da Manhã",
+    "price": "R$ 189,90",
+    "volume": "Cesta Completa",
+    "tags": [
+      "presente",
+      "manha",
+      "cestas"
+    ],
+    "image": "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=400&q=80",
+    "variations": ["Café da Manhã Clássica", "Romance Amanhecer", "Especial de Chocolates"],
+    "sizes": ["Padrão (1 Pessoa)", "Premium (2 Pessoas)"]
+  },
+  {
+    "id": "cesta-romantica-flores-vinho",
+    "name": "Cesta Romance & Vinho",
+    "category": "Cestas",
+    "type": "Diversos",
+    "brand": "Diversos",
+    "line": "Cestas Românticas",
+    "notes": "Vinho Tinto Cabernet, Taça, Chocolates, Mini Buquê",
+    "description": "Uma experiência completa combinando elegância e sabor. Perfeito para comemorações a dois.",
+    "intensity": "Kit Presente",
+    "price": "R$ 249,90",
+    "volume": "Cesta Média",
     "tags": [
       "noite",
-      "encontro",
+      "presente",
+      "romantico",
+      "cestas"
+    ],
+    "image": "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=400&q=80",
+    "variations": ["Romance Cabernet", "Romance Champagne", "Romance Sem Álcool"],
+    "sizes": ["Standard", "VIP (Taças Inclusas)"]
+  },
+  {
+    "id": "pijama-cetim-demillus",
+    "name": "Pijama de Cetim Soft (DeMillus)",
+    "category": "Roupas",
+    "type": "Diversos",
+    "brand": "DeMillus",
+    "line": "Pijamas",
+    "notes": "Cetim Premium leve e acetinado",
+    "description": "Conforto absoluto combinado com uma elegância atemporal para as suas noites de descanso.",
+    "intensity": "Homewear",
+    "price": "R$ 139,90",
+    "volume": "Cetim Soft",
+    "tags": [
+      "noite",
+      "roupas",
+      "conforto"
+    ],
+    "image": "https://images.unsplash.com/photo-1562572159-4ebcd318f4dd?auto=format&fit=crop&w=400&q=80",
+    "variations": ["Rosa Soft", "Preto Noite", "Vinho Elegance"],
+    "sizes": ["P", "M", "G", "GG"]
+  },
+  {
+    "id": "robe-intimo-demillus",
+    "name": "Robe Sensuale em Renda (DeMillus)",
+    "category": "Roupas",
+    "type": "Diversos",
+    "brand": "DeMillus",
+    "line": "Robes",
+    "notes": "Renda Jacquard premium e toque acetinado",
+    "description": "Peça versátil de alta costura íntima. Proporciona leveza, sofisticação e sensualidade na medida certa.",
+    "intensity": "Renda Soft",
+    "price": "R$ 159,90",
+    "volume": "Tamanho Único",
+    "tags": [
+      "noite",
+      "roupas",
       "sensual"
     ],
-    "image": "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=400&q=80"
+    "image": "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80",
+    "variations": ["Branco Off-White", "Preto Luxo", "Vermelho Sedução"],
+    "sizes": ["Único"]
+  },
+  {
+    "id": "buque-rosas-vermelhas",
+    "name": "Buquê de Rosas Vermelhas",
+    "category": "Flores",
+    "type": "Diversos",
+    "brand": "Diversos",
+    "line": "Buquês",
+    "notes": "Rosas selecionadas, Folhagens nobres, Embalagem de luxo",
+    "description": "O símbolo máximo do amor e admiração. Rosas frescas colhidas no dia para presentear com máxima emoção.",
+    "intensity": "Arranjo Natural",
+    "price": "R$ 120,00",
+    "volume": "Flores Frescas",
+    "tags": [
+      "dia",
+      "presente",
+      "romantico",
+      "flores"
+    ],
+    "image": "https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=400&q=80",
+    "variations": ["Rosas Vermelhas Clássicas", "Rosas Cor-de-Rosa", "Rosas Coloridas Mistas"],
+    "sizes": ["12 Rosas", "24 Rosas", "50 Rosas"]
+  },
+  {
+    "id": "arranjo-orquidea-phalaenopsis",
+    "name": "Orquídea Phalaenopsis Premium",
+    "category": "Flores",
+    "type": "Diversos",
+    "brand": "Diversos",
+    "line": "Orquídeas",
+    "notes": "Vaso cerâmico com planta adulta de duas hastes",
+    "description": "Elegância e durabilidade para decorar ambientes com serenidade. Uma planta nobre que expressa carinho.",
+    "intensity": "Durável",
+    "price": "R$ 98,00",
+    "volume": "Vaso Decorado",
+    "tags": [
+      "dia",
+      "decoracao",
+      "flores"
+    ],
+    "image": "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=400&q=80",
+    "variations": ["Orquídea Branca", "Orquídea Púrpura", "Orquídea Rosa"],
+    "sizes": ["Vaso Cerâmico", "Vaso Rústico", "Vaso Vidro Elegance"]
   }
 ]

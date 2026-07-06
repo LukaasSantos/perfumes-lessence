@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L'Essence - Painel Administrativo</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sage: {
+              50: '#F4F7F5',
+              100: '#E9EFEA',
+              200: '#D1E0D4',
+              300: '#AAC4B1',
+              600: '#4A5E4E',
+              700: '#3D4F41',
+              800: '#2F3E33',
+              900: '#1F2A21',
+            },
+            cream: {
+              50: '#FAF8F5',
+              100: '#FAF7F2',
+              200: '#F5EAE6',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-cream-100 text-sage-900 min-h-screen flex flex-col">
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 left-0 right-0 z-50 glass-nav transition-smooth h-20 flex items-center">
+    <div class="max-w-7xl mx-auto px-6 w-full flex items-center justify-between">
+      <div class="flex items-center space-x-4">
+        <a href="index.html" class="font-serif-elegant text-2xl tracking-widest text-sage-800 font-semibold">L'ESSENCE</a>
+        <span class="text-xs uppercase tracking-wider text-sage-600 bg-sage-100 px-2.5 py-0.5 rounded-md font-medium font-sans">Painel Admin</span>
+      </div>
+      <div class="flex items-center space-x-6 text-sm font-sans">
+        <a href="index.html" class="text-sage-600 hover:text-sage-900 transition-colors">Voltar ao Site</a>
+        <a href="colecoes.html" class="text-sage-600 hover:text-sage-900 transition-colors font-medium">Catálogo</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content Container -->
+  <main class="pt-28 flex-1 max-w-7xl mx-auto px-6 w-full pb-24 font-sans">
+    
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+      <div>
+        <h1 class="text-3xl font-light text-sage-900 font-serif">Gerenciador de Negócios</h1>
+        <p class="text-xs text-sage-500 font-light mt-1">Gerencie produtos e valide pedidos de clientes em tempo real.</p>
+      </div>
+      <div class="flex flex-wrap gap-2 text-xs font-semibold">
+        <button onclick="exportCatalogJSON()" class="bg-white border border-sage-200 hover:bg-sage-50 text-sage-800 py-2.5 px-4 rounded-xl transition-smooth shadow-sm flex items-center space-x-1.5 focus:outline-none">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          <span>Exportar JSON</span>
+        </button>
+        <button onclick="resetCatalogDefault()" class="bg-rose-50 hover:bg-rose-100 text-rose-600 py-2.5 px-4 rounded-xl transition-smooth flex items-center space-x-1.5 focus:outline-none">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 8H18"/></svg>
+          <span>Resetar Padrão</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="border-b border-sage-200 mb-8">
+      <div class="flex space-x-8">
+        <button id="tab-catalog-btn" class="border-b-2 border-sage-600 text-sage-900 py-4 px-1 text-xs font-semibold tracking-wider uppercase focus:outline-none transition-smooth">
+          Gerenciar Catálogo
+        </button>
+        <button id="tab-orders-btn" class="border-b-2 border-transparent text-sage-500 hover:text-sage-900 py-4 px-1 text-xs font-semibold tracking-wider uppercase focus:outline-none transition-smooth">
+          Validar Pedidos
+        </button>
+      </div>
+    </div>
+
+    <!-- Tab 1: Catalog Management -->
+    <section id="tab-catalog-content" class="space-y-6">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <h2 class="text-xl font-serif-elegant text-sage-800">Catálogo de Produtos</h2>
+        <button onclick="openProductFormModal()" class="bg-[#2F3E33] hover:bg-sage-700 text-white text-xs font-semibold py-2.5 px-4 rounded-xl transition-smooth shadow-md flex items-center space-x-1.5 focus:outline-none w-full sm:w-auto justify-center">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          <span>Novo Produto</span>
+        </button>
+      </div>
+
+      <!-- Category Quick Filter Buttons -->
+      <div class="flex flex-wrap gap-2 items-center bg-white/40 p-3 rounded-2xl border border-sage-100/80 w-full lg:max-w-max">
+        <span class="text-[10px] uppercase font-bold text-sage-600 tracking-wider mr-2">Filtrar Categoria:</span>
+        <button onclick="filterAdminCategory('all')" id="filter-admin-all" class="admin-filter-btn bg-sage-800 text-white py-1 px-3 rounded-lg text-[10px] font-semibold uppercase tracking-wider transition-smooth">
+          Todos
+        </button>
+        <button onclick="filterAdminCategory('produtos')" id="filter-admin-produtos" class="admin-filter-btn bg-white hover:bg-sage-50 text-sage-800 py-1 px-3 border border-sage-200 rounded-lg text-[10px] font-semibold uppercase tracking-wider transition-smooth">
+          Produtos
+        </button>
+        <button onclick="filterAdminCategory('cestas')" id="filter-admin-cestas" class="admin-filter-btn bg-white hover:bg-sage-50 text-sage-800 py-1 px-3 border border-sage-200 rounded-lg text-[10px] font-semibold uppercase tracking-wider transition-smooth">
+          Cestas
+        </button>
+        <button onclick="filterAdminCategory('roupas')" id="filter-admin-roupas" class="admin-filter-btn bg-white hover:bg-sage-50 text-sage-800 py-1 px-3 border border-sage-200 rounded-lg text-[10px] font-semibold uppercase tracking-wider transition-smooth">
+          Roupas
+        </button>
+        <button onclick="filterAdminCategory('flores')" id="filter-admin-flores" class="admin-filter-btn bg-white hover:bg-sage-50 text-sage-800 py-1 px-3 border border-sage-200 rounded-lg text-[10px] font-semibold uppercase tracking-wider transition-smooth">
+          Flores
+        </button>
+      </div>
+
+      <!-- Products Table -->
+      <div class="bg-white rounded-3xl border border-sage-100 shadow-sm overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-sage-100">
+            <thead class="bg-sage-50/50">
+              <tr>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-sage-600 uppercase tracking-wider">Produto</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-sage-600 uppercase tracking-wider">Categoria</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-sage-600 uppercase tracking-wider">Marca</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-sage-600 uppercase tracking-wider">Linha</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-sage-600 uppercase tracking-wider">Preço</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-sage-600 uppercase tracking-wider">Estoque</th>
+                <th scope="col" class="relative px-6 py-3"><span class="sr-only">Ações</span></th>
+              </tr>
+            </thead>
+            <tbody id="admin-products-table-body" class="divide-y divide-sage-100 bg-white text-xs">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tab 2: Order Validation -->
+    <section id="tab-orders-content" class="hidden space-y-6">
+      <h2 class="text-xl font-serif-elegant text-sage-800">Validação e Histórico de Pedidos</h2>
+
+      <div class="bg-white rounded-3xl border border-sage-100 shadow-sm overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-sage-100">
+            <thead class="bg-sage-50/50">
+              <tr>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-sage-600 uppercase tracking-wider">Data</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-sage-600 uppercase tracking-wider">Cliente</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-sage-600 uppercase tracking-wider">Itens</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-sage-600 uppercase tracking-wider">Total</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-sage-600 uppercase tracking-wider">Status</th>
+                <th scope="col" class="relative px-6 py-3"><span class="sr-only">Ações</span></th>
+              </tr>
+            </thead>
+            <tbody id="admin-orders-table-body" class="divide-y divide-sage-100 bg-white text-xs">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Product Create/Edit Modal -->
+  <div id="product-form-modal" class="fixed inset-0 z-50 overflow-hidden flex items-center justify-center p-4 bg-black/60 hidden">
+    <div class="bg-white max-w-2xl w-full rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+      <!-- Header -->
+      <div class="p-6 border-b border-sage-100 flex justify-between items-center bg-sage-50/30">
+        <h3 id="form-modal-title" class="text-lg font-serif-elegant font-semibold text-sage-900">Novo Produto</h3>
+        <button onclick="closeProductFormModal()" class="text-sage-400 hover:text-sage-700 transition-colors focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Form Content (Scrollable) -->
+      <form id="product-form" class="flex-1 overflow-y-auto p-6 space-y-4 text-xs font-sans">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          
+          <!-- Name -->
+          <div>
+            <label for="prod-name" class="block text-[10px] font-semibold text-sage-700 uppercase tracking-wider mb-1">Nome do Produto *</label>
+            <input type="text" id="prod-name" required class="w-full bg-sage-50 border border-sage-200 rounded-xl py-2.5 px-3 focus:outline-none focus:border-sage-600 transition-smooth">
+          </div>
+
+          <!-- Price -->
+          <div>
+            <label for="prod-price" class="block text-[10px] font-semibold text-sage-700 uppercase tracking-wider mb-1">Preço (ex: R$ 149,90) *</label>
+            <input type="text" id="prod-price" required class="w-full bg-sage-50 border border-sage-200 rounded-xl py-2.5 px-3 focus:outline-none focus:border-sage-600 transition-smooth">
+          </div>
+
+          <!-- Category -->
+          <div>
+            <label for="prod-category" class="block text-[10px] font-semibold text-sage-700 uppercase tracking-wider mb-1">Categoria Principal *</label>
+            <select id="prod-category" class="w-full bg-sage-50 border border-sage-200 rounded-xl py-2.5 px-3 focus:outline-none focus:border-sage-600 transition-smooth">
+              <option value="Produtos">Produtos</option>
+              <option value="Cestas">Cestas</option>
+              <option value="Roupas">Roupas</option>
+              <option value="Flores">Flores</option>
+            </select>
+          </div>
+
+          <!-- Subtype -->
+          <div>
+            <label for="prod-type" class="block text-[10px] font-semibold text-sage-700 uppercase tracking-wider mb-1">Tipo / Subtipo</label>
+            <select id="prod-type" class="w-full bg-sage-50 border border-sage-200 rounded-xl py-2.5 px-3 focus:outline-none focus:border-sage-600 transition-smooth">
+              <option value="Perfumes">Perfumes</option>
+              <option value="Cremes">Cremes</option>
+              <option value="Diversos">Diversos / Nenhum</option>
+            </select>
+          </div>
+
+          <!-- Brand -->
+          <div>
+            <label for="prod-brand" class="block text-[10px] font-semibold text-sage-700 uppercase tracking-wider mb-1">Marca (ex: Natura, O Boticário)</label>
+            <input type="text" id="prod-brand" class="w-full bg-sage-50 border border-sage-200 rounded-xl py-2.5 px-3 focus:outline-none focus:border-sage-600 transition-smooth">
+          </div>
+
+          <!-- Line -->
+          <div>
+            <label for="prod-line" class="block text-[10px] font-semibold text-sage-700 uppercase tracking-wider mb-1">Linha (ex: Tododia, Lily)</label>
+            <input type="text" id="prod-line" class="w-full bg-sage-50 border border-sage-200 rounded-xl py-2.5 px-3 focus:outline-none focus:border-sage-600 transition-smooth">
+          </div>
+
+          <!-- Volume / Format -->
+          <div>
+            <label for="prod-volume" class="block text-[10px] font-semibold text-sage-700 uppercase tracking-wider mb-1">Formato / Detalhe (ex: Frasco de Vidro, Pote Prático)</label>
+            <input type="text" id="prod-volume" class="w-full bg-sage-50 border border-sage-200 rounded-xl py-2.5 px-3 focus:outline-none focus:border-sage-600 transition-smooth">
+          </div>
+
+          <!-- Stock quantity -->
+          <div>
+            <label for="prod-quantity" class="block text-[10px] font-semibold text-sage-700 uppercase tracking-wider mb-1">Quantidade em Estoque</label>
+            <input type="number" id="prod-quantity" value="10" class="w-full bg-sage-50 border border-sage-200 rounded-xl py-2.5 px-3 focus:outline-none focus:border-sage-600 transition-smooth">
+          </div>
+
+          <!-- Image URL -->
+          <div class="col-span-1 md:col-span-2">
+            <label for="prod-image" class="block text-[10px] font-semibold text-sage-700 uppercase tracking-wider mb-1">URL da Imagem</label>
+            <input type="text" id="prod-image" class="w-full bg-sage-50 border border-sage-200 rounded-xl py-2.5 px-3 focus:outline-none focus:border-sage-600 transition-smooth" placeholder="https://images.unsplash.com/...">
+          </div>
+
+          <!-- Intensity / Label -->
+          <div>
+            <label for="prod-intensity" class="block text-[10px] font-semibold text-sage-700 uppercase tracking-wider mb-1">Fixação / Detalhe (ex: Alta Fixação)</label>
+            <input type="text" id="prod-intensity" class="w-full bg-sage-50 border border-sage-200 rounded-xl py-2.5 px-3 focus:outline-none focus:border-sage-600 transition-smooth">
+          </div>
+
+          <!-- Notes -->
+          <div>
+            <label for="prod-notes" class="block text-[10px] font-semibold text-sage-700 uppercase tracking-wider mb-1">Notas Olfativas / Características Curtas</label>
+            <input type="text" id="prod-notes" class="w-full bg-sage-50 border border-sage-200 rounded-xl py-2.5 px-3 focus:outline-none focus:border-sage-600 transition-smooth" placeholder="ex: Lavanda, Baunilha...">
+          </div>
+
+          <!-- Description -->
+          <div class="col-span-1 md:col-span-2">
+            <label for="prod-description" class="block text-[10px] font-semibold text-sage-700 uppercase tracking-wider mb-1">Descrição</label>
+            <textarea id="prod-description" rows="3" class="w-full bg-sage-50 border border-sage-200 rounded-xl py-2.5 px-3 focus:outline-none focus:border-sage-600 transition-smooth resize-none"></textarea>
+          </div>
+
+          <!-- Variations -->
+          <div>
+            <label for="prod-variations" class="block text-[10px] font-semibold text-sage-700 uppercase tracking-wider mb-1">Fragrâncias / Variações (separar com vírgula)</label>
+            <input type="text" id="prod-variations" class="w-full bg-sage-50 border border-sage-200 rounded-xl py-2.5 px-3 focus:outline-none focus:border-sage-600 transition-smooth" placeholder="Ameixa, Karité, Algodão">
+          </div>
+
+          <!-- Sizes -->
+          <div>
+            <label for="prod-sizes" class="block text-[10px] font-semibold text-sage-700 uppercase tracking-wider mb-1">Volumes / Tamanhos (separar com vírgula)</label>
+            <input type="text" id="prod-sizes" class="w-full bg-sage-50 border border-sage-200 rounded-xl py-2.5 px-3 focus:outline-none focus:border-sage-600 transition-smooth" placeholder="100ml, 200ml, 400ml">
+          </div>
+
+        </div>
+
+        <!-- Footer Actions -->
+        <div class="pt-4 border-t border-sage-100 flex justify-end space-x-2">
+          <button type="button" onclick="closeProductFormModal()" class="bg-sage-100 hover:bg-sage-200 text-sage-800 font-semibold py-2 px-4 rounded-xl transition-smooth">Cancelar</button>
+          <button type="submit" class="bg-[#2F3E33] hover:bg-sage-800 text-white font-semibold py-2 px-6 rounded-xl transition-smooth font-medium">Salvar Produto</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+</body>
+</html>

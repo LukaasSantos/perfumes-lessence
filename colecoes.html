@@ -77,9 +77,9 @@
       <a href="index.html" class="font-serif-elegant text-2xl tracking-widest text-sage-800 font-semibold">L'ESSENCE</a>
       
       <div class="hidden md:flex items-center space-x-8 text-sm tracking-wider font-medium text-sage-700">
-        <a href="index.html#concept" class="hover:text-sage-900 transition-colors">Conceito</a>
+        <a href="colecoes.html" class="text-sage-900 font-semibold border-b border-sage-600">Coleções</a>
         <a href="index.html#assistant" class="hover:text-sage-900 transition-colors">Descobrir Aroma</a>
-        <a href="#" class="text-sage-900 font-semibold border-b border-sage-600">Coleções</a>
+        <a href="index.html#concept" class="hover:text-sage-900 transition-colors">Conceito</a>
         <a href="index.html#faq" class="hover:text-sage-900 transition-colors">Dúvidas</a>
       </div>
 
@@ -90,6 +90,14 @@
           </svg>
           <span>Atendimento</span>
         </a>
+
+        <!-- Cart Button -->
+        <button id="cart-toggle" class="relative bg-sage-100 text-sage-800 hover:bg-[#D1E2D3] p-2.5 rounded-full transition-all duration-300 flex items-center justify-center focus:outline-none ml-2">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+          </svg>
+          <span id="cart-badge" class="absolute -top-1 -right-1 bg-terracotta-500 text-white text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center transition-all duration-300 transform scale-0">0</span>
+        </button>
         
         <!-- Hamburger Menu Button -->
         <button id="menu-toggle" class="flex md:hidden text-sage-800 focus:outline-none p-2 hover:text-sage-600 transition-colors">
@@ -102,56 +110,85 @@
     
     <!-- Mobile Submenu -->
     <div id="mobile-menu" class="fixed top-20 left-0 right-0 bg-[#FAF7F2]/95 backdrop-blur-md border-b border-sage-100 py-6 px-6 md:hidden flex flex-col space-y-4 shadow-lg transition-all duration-300 ease-in-out z-40 transform -translate-y-4 opacity-0 pointer-events-none">
-      <a href="index.html#concept" class="mobile-link text-lg font-medium text-sage-700 hover:text-sage-900 transition-colors py-2 border-b border-sage-50">Conceito</a>
-      <a href="index.html#assistant" class="mobile-link text-lg font-medium text-sage-700 hover:text-sage-900 transition-colors py-2 border-b border-sage-50">Descobrir Aroma</a>
       <a href="colecoes.html" class="mobile-link text-lg font-medium text-sage-700 hover:text-sage-900 transition-colors py-2 border-b border-sage-50">Coleções</a>
+      <a href="index.html#assistant" class="mobile-link text-lg font-medium text-sage-700 hover:text-sage-900 transition-colors py-2 border-b border-sage-50">Descobrir Aroma</a>
+      <a href="index.html#concept" class="mobile-link text-lg font-medium text-sage-700 hover:text-sage-900 transition-colors py-2 border-b border-sage-50">Conceito</a>
       <a href="index.html#faq" class="mobile-link text-lg font-medium text-sage-700 hover:text-sage-900 transition-colors py-2">Dúvidas</a>
     </div>
   </nav>
 
-  <!-- Collection Header -->
-  <section class="pt-32 pb-12 px-6 max-w-7xl mx-auto">
-    <div class="text-center max-w-2xl mx-auto space-y-4" data-aos="fade-up">
+  <!-- Catalog Section -->
+  <section class="pt-32 pb-24 px-6 max-w-7xl mx-auto">
+    <!-- Header -->
+    <div class="text-center max-w-2xl mx-auto space-y-4 mb-12" data-aos="fade-up">
       <span class="text-xs uppercase tracking-widest text-sage-600 bg-sage-100 px-3 py-1 rounded-full font-medium">Catálogo Geral</span>
       <h1 class="text-4xl md:text-5xl font-light text-sage-900 mt-2">Nossas Fragrâncias</h1>
-      <p class="text-base text-sage-600 leading-relaxed font-light">Explore todos os perfumes disponíveis das principais marcas e encontre a fragrância que melhor combina com a sua personalidade.</p>
+      <p class="text-base text-sage-600 leading-relaxed font-light font-sans-elegant">Explore todos os perfumes e cremes disponíveis das principais marcas e encontre o mimo perfeito para você.</p>
     </div>
 
-    <!-- Search and Filters Section -->
-    <div class="mt-12 max-w-3xl mx-auto space-y-6" data-aos="fade-up">
-      <!-- Search Input -->
-      <div class="relative">
-        <input type="text" id="search-input" placeholder="Buscar por perfume, marca ou notas olfativas..." class="w-full bg-white border border-sage-200 rounded-2xl py-4 pl-12 pr-4 text-sm text-sage-800 focus:outline-none focus:border-sage-600 focus:ring-1 focus:ring-sage-600 placeholder-sage-400 transition-smooth">
-        <svg class="w-5 h-5 text-sage-400 absolute left-4 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-        </svg>
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
+      <!-- Left Column: Filters -->
+      <div class="lg:col-span-1 space-y-6 lg:sticky lg:top-24 bg-white/40 p-6 rounded-3xl border border-sage-200/50 shadow-sm" data-aos="fade-up">
+        <h3 class="text-lg font-serif-elegant text-sage-900 font-semibold border-b border-sage-200/60 pb-3">Filtros</h3>
+        
+        <!-- Search Input -->
+        <div class="space-y-2">
+          <label for="search-input" class="block text-[10px] font-semibold text-sage-700 uppercase tracking-wider mb-1">Buscar</label>
+          <div class="relative">
+            <input type="text" id="search-input" placeholder="Perfume, marca, notas..." class="w-full bg-white border border-sage-200 rounded-xl py-2.5 pl-9 pr-3 text-xs text-sage-800 focus:outline-none focus:border-sage-600 transition-smooth placeholder-sage-400">
+            <svg class="w-4 h-4 text-sage-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Categories List (Vertical Column) -->
+        <div class="space-y-2">
+          <span class="block text-[10px] font-semibold text-sage-700 uppercase tracking-wider mb-2">Categorias</span>
+          <div class="flex flex-col space-y-1.5">
+            <button data-category="all" class="filter-btn text-left w-full bg-[#4A5E4E] text-white py-2.5 px-4 rounded-xl text-xs font-semibold uppercase tracking-wider transition-smooth">
+              Todos
+            </button>
+            <button data-category="produtos" class="filter-btn text-left w-full bg-[#FAF7F2] text-[#4A5E4E] hover:bg-[#D1E2D3] py-2.5 px-4 rounded-xl text-xs font-semibold uppercase tracking-wider transition-smooth">
+              Produtos
+            </button>
+            <button data-category="cestas" class="filter-btn text-left w-full bg-[#FAF7F2] text-[#4A5E4E] hover:bg-[#D1E2D3] py-2.5 px-4 rounded-xl text-xs font-semibold uppercase tracking-wider transition-smooth">
+              Cestas
+            </button>
+            <button data-category="roupas" class="filter-btn text-left w-full bg-[#FAF7F2] text-[#4A5E4E] hover:bg-[#D1E2D3] py-2.5 px-4 rounded-xl text-xs font-semibold uppercase tracking-wider transition-smooth">
+              Roupas
+            </button>
+            <button data-category="flores" class="filter-btn text-left w-full bg-[#FAF7F2] text-[#4A5E4E] hover:bg-[#D1E2D3] py-2.5 px-4 rounded-xl text-xs font-semibold uppercase tracking-wider transition-smooth">
+              Flores
+            </button>
+          </div>
+        </div>
+
+        <!-- Cascading Brand & Line Filters -->
+        <div id="sub-filters-container" class="hidden space-y-4 pt-4 border-t border-sage-200/60 transition-all duration-350 ease-out">
+          <div>
+            <label for="filter-brand" class="block text-[10px] font-semibold text-sage-700 uppercase tracking-wider mb-1.5">Selecionar Marca</label>
+            <select id="filter-brand" class="w-full bg-white border border-sage-200 rounded-xl py-2.5 px-3 text-xs text-sage-800 focus:outline-none focus:border-sage-600 transition-smooth">
+              <option value="all">Todas as Marcas</option>
+              <option value="Natura">Natura</option>
+              <option value="O Boticário">O Boticário</option>
+            </select>
+          </div>
+          <div>
+            <label for="filter-line" class="block text-[10px] font-semibold text-sage-700 uppercase tracking-wider mb-1.5">Selecionar Linha</label>
+            <select id="filter-line" class="w-full bg-white border border-sage-200 rounded-xl py-2.5 px-3 text-xs text-sage-800 focus:outline-none focus:border-sage-600 transition-smooth">
+              <option value="all">Todas as Linhas</option>
+            </select>
+          </div>
+        </div>
       </div>
 
-      <!-- Category Filter Buttons -->
-      <div class="flex flex-wrap justify-center gap-3">
-        <button data-category="all" class="filter-btn bg-[#4A5E4E] text-white py-2.5 px-6 rounded-full text-xs font-semibold uppercase tracking-wider transition-smooth">
-          Todos
-        </button>
-        <button data-category="fresco" class="filter-btn bg-[#FAF7F2] text-[#4A5E4E] hover:bg-[#D1E2D3] py-2.5 px-6 rounded-full text-xs font-semibold uppercase tracking-wider transition-smooth">
-          Frescos
-        </button>
-        <button data-category="amadeirado" class="filter-btn bg-[#FAF7F2] text-[#4A5E4E] hover:bg-[#D1E2D3] py-2.5 px-6 rounded-full text-xs font-semibold uppercase tracking-wider transition-smooth">
-          Amadeirados
-        </button>
-        <button data-category="floral" class="filter-btn bg-[#FAF7F2] text-[#4A5E4E] hover:bg-[#D1E2D3] py-2.5 px-6 rounded-full text-xs font-semibold uppercase tracking-wider transition-smooth">
-          Florais
-        </button>
-        <button data-category="noite" class="filter-btn bg-[#FAF7F2] text-[#4A5E4E] hover:bg-[#D1E2D3] py-2.5 px-6 rounded-full text-xs font-semibold uppercase tracking-wider transition-smooth">
-          Intensos
-        </button>
+      <!-- Right Column: Product Grid -->
+      <div class="lg:col-span-3">
+        <div id="catalog-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          <!-- Injected dynamically by JS -->
+        </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Catalog Grid Section -->
-  <section class="pb-24 px-6 max-w-7xl mx-auto">
-    <div id="catalog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Injected dynamically by JS -->
     </div>
   </section>
 
@@ -176,6 +213,150 @@
       <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 001.37 5.028L2 22l5.13-1.348a9.926 9.926 0 004.878 1.28c5.505 0 9.988-4.478 9.99-9.985 0-2.67-1.04-5.18-2.927-7.07C17.186 3.03 14.683 2 12.012 2zm5.82 14.072c-.32.905-1.6 1.657-2.22 1.758-.573.09-1.32.16-2.115-.094-.49-.158-1.12-.39-1.91-.734-3.37-1.465-5.52-4.883-5.69-5.109-.168-.225-1.37-1.815-1.37-3.463 0-1.648.86-2.46 1.166-2.793.305-.333.666-.416.89-.416a.65.65 0 01.46.213c.18.232.61 1.485.666 1.602.056.116.093.25.016.4-.077.15-.17.25-.336.44-.165.19-.35.43-.5.61-.17.195-.347.41-.15.75.196.34.873 1.436 1.87 2.324.997.888 1.84 1.162 2.186 1.306.346.143.55.12.753-.11.203-.23.873-1.01.11-1.258a6.37 6.37 0 00-.7-.41c-.244-.117-.49-.06-.67.016-.18.077-1.14.47-1.14.47s-.656.284-.97.1c-.314-.183-.56-.51-.81-.88-.25-.37-.876-1.57-.46-2.14.417-.57.97-.23.97-.23s.256.09.43.047c.174-.043.328-.158.4-.294.073-.136.32-.78.32-.78s.16-.39.06-.576c-.1-.186-.676-1.62-.926-2.073-.25-.453-.51-.375-.7-.375h-.6c-.23 0-.6.086-.92.436C6.776 6.848 6 7.828 6 9.818c0 1.99 1.45 3.918 1.65 4.19.2.27 2.85 4.33 6.9 6.07 3.37 1.45 4.67 1.17 6.35.29.61-.32 1.51-1.2 1.72-2.3z"/>
     </svg>
   </a>
+
+  <!-- Cart Sidebar Drawer -->
+  <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden pointer-events-none transition-all duration-500">
+    <!-- Backdrop -->
+    <div id="cart-backdrop" class="absolute inset-0 bg-black/40 opacity-0 transition-opacity duration-500 pointer-events-none"></div>
+    
+    <!-- Drawer Panel -->
+    <div id="cart-panel" class="absolute top-0 right-0 max-w-md w-full h-full bg-[#FAF7F2] shadow-2xl flex flex-col pointer-events-auto transform translate-x-full transition-transform duration-500 ease-in-out border-l border-sage-100">
+      <!-- Drawer Header -->
+      <div class="p-6 border-b border-sage-200/60 flex justify-between items-center bg-[#FAF8F5]">
+        <div class="flex flex-col">
+          <h2 class="text-xl font-serif-elegant font-semibold text-sage-900 flex items-center space-x-2">
+            <span>Seu Carrinho</span>
+            <span id="cart-count-title" class="text-xs font-sans font-medium text-sage-600 bg-sage-100 px-2 py-0.5 rounded-full">0 itens</span>
+          </h2>
+          <button onclick="clearCart()" class="text-[10px] text-rose-500 hover:text-rose-700 transition-colors font-medium flex items-center space-x-1 mt-1.5 focus:outline-none w-max">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+            </svg>
+            <span>Limpar Carrinho</span>
+          </button>
+        </div>
+        <button id="cart-close" class="text-sage-600 hover:text-sage-900 focus:outline-none p-1 rounded-full hover:bg-sage-100 transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Drawer Items (Scrollable) -->
+      <div id="cart-items-container" class="flex-1 overflow-y-auto p-6 space-y-4">
+        <!-- Rendered dynamically by JS -->
+        <div class="text-center py-12 text-sage-600 space-y-3">
+          <svg class="w-12 h-12 mx-auto text-sage-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+          </svg>
+          <p class="font-serif-elegant text-lg">Seu carrinho está vazio</p>
+          <p class="text-xs font-light text-sage-500">Adicione alguns mimos especiais para começar.</p>
+        </div>
+      </div>
+
+      <!-- Checkout Form & Summary Area -->
+      <div id="cart-checkout-section" class="p-6 border-t border-sage-200/60 bg-[#FAF8F5] space-y-4 hidden border-t border-sage-100">
+        <div class="flex justify-between items-baseline text-sage-800">
+          <span class="text-sm font-medium">Subtotal:</span>
+          <span id="cart-total-price" class="text-xl font-semibold">R$ 0,00</span>
+        </div>
+
+        <!-- Contact Information Form -->
+        <form id="checkout-form" class="space-y-3 pt-3 border-t border-sage-200/40">
+          <div>
+            <label for="client-name" class="block text-[11px] font-semibold text-sage-700 uppercase tracking-wider mb-1">Nome Completo *</label>
+            <input type="text" id="client-name" required class="w-full bg-white border border-sage-200 rounded-xl py-2.5 px-3 text-xs text-sage-800 focus:outline-none focus:border-sage-600 focus:ring-1 focus:ring-sage-600 transition-smooth" placeholder="Seu nome">
+          </div>
+          <div>
+            <label for="client-phone" class="block text-[11px] font-semibold text-sage-700 uppercase tracking-wider mb-1">Telefone / WhatsApp *</label>
+            <input type="tel" id="client-phone" required class="w-full bg-white border border-sage-200 rounded-xl py-2.5 px-3 text-xs text-sage-800 focus:outline-none focus:border-sage-600 focus:ring-1 focus:ring-sage-600 transition-smooth" placeholder="(00) 99999-9999">
+          </div>
+          <div>
+            <label for="client-notes" class="block text-[11px] font-semibold text-sage-700 uppercase tracking-wider mb-1">Observações do Pedido</label>
+            <textarea id="client-notes" rows="2" class="w-full bg-white border border-sage-200 rounded-xl py-2 px-3 text-xs text-sage-800 focus:outline-none focus:border-sage-600 focus:ring-1 focus:ring-sage-600 transition-smooth resize-none" placeholder="Ex: Mensagem para presente, embalagem especial..."></textarea>
+          </div>
+
+          <button type="submit" class="w-full bg-[#2F3E33] hover:bg-sage-850 text-white font-medium py-3 px-4 rounded-xl transition-all duration-300 shadow-md flex items-center justify-center space-x-2 mt-4 text-xs tracking-wider uppercase">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 001.37 5.028L2 22l5.13-1.348a9.926 9.926 0 004.878 1.28c5.505 0 9.988-4.478 9.99-9.985 0-2.67-1.04-5.18-2.927-7.07C17.186 3.03 14.683 2 12.012 2zm5.82 14.072c-.32.905-1.6 1.657-2.22 1.758-.573.09-1.32.16-2.115-.094-.49-.158-1.12-.39-1.91-.734-3.37-1.465-5.52-4.883-5.69-5.109-.168-.225-1.37-1.815-1.37-3.463 0-1.648.86-2.46 1.166-2.793.305-.333.666-.416.89-.416a.65.65 0 01.46.213c.18.232.61 1.485.666 1.602.056.116.093.25.016.4-.077.15-.17.25-.336.44-.165.19-.35.43-.5.61-.17.195-.347.41-.15.75.196.34.873 1.436 1.87 2.324.997.888 1.84 1.162 2.186 1.306.346.143.55.12.753-.11.203-.23.873-1.01.11-1.258a6.37 6.37 0 00-.7-.41c-.244-.117-.49-.06-.67.016-.18.077-1.14.47-1.14.47s-.656.284-.97.1c-.314-.183-.56-.51-.81-.88-.25-.37-.876-1.57-.46-2.14.417-.57.97-.23.97-.23s.256.09.43.047c.174-.043.328-.158.4-.294.073-.136.32-.78.32-.78s.16-.39.06-.576c-.1-.186-.676-1.62-.926-2.073-.25-.453-.51-.375-.7-.375h-.6c-.23 0-.6.086-.92.436C6.776 6.848 6 7.828 6 9.818c0 1.99 1.45 3.918 1.65 4.19.2.27 2.85 4.33 6.9 6.07 3.37 1.45 4.67 1.17 6.35.29.61-.32 1.51-1.2 1.72-2.3z"/>
+            </svg>
+            <span>Finalizar Pedido via WhatsApp</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Details / Variations Modal -->
+  <div id="product-modal" class="fixed inset-0 z-50 overflow-hidden pointer-events-none transition-all duration-300 flex items-center justify-center p-4 hidden">
+    <!-- Backdrop -->
+    <div id="product-modal-backdrop" class="absolute inset-0 bg-black/60 opacity-0 transition-opacity duration-300 pointer-events-none"></div>
+    
+    <!-- Modal Content Panel -->
+    <div id="product-modal-panel" class="relative bg-[#FAF7F2] max-w-2xl w-full rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row pointer-events-auto transform scale-95 opacity-0 transition-all duration-350 ease-out border border-sage-100 max-h-[90vh] md:max-h-none overflow-y-auto md:overflow-y-visible">
+      <!-- Close Button -->
+      <button id="product-modal-close" class="absolute top-4 right-4 z-10 text-sage-600 hover:text-sage-900 focus:outline-none p-1.5 bg-white/80 rounded-full backdrop-blur-sm transition-colors shadow-sm">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+
+      <!-- Left Column: Product Image -->
+      <div class="md:w-1/2 bg-white flex items-center justify-center p-8 border-b md:border-b-0 md:border-r border-sage-100 min-h-[250px] md:min-h-0">
+        <img id="modal-product-image" src="" alt="" class="object-contain max-h-[280px] w-full transition-transform duration-350 hover:scale-105">
+      </div>
+
+      <!-- Right Column: Product Info & Variations -->
+      <div class="md:w-1/2 p-6 md:p-8 flex flex-col justify-between space-y-6">
+        <div>
+          <span id="modal-product-category" class="text-[10px] uppercase tracking-widest text-[#4A5E4E] bg-sage-100 px-3 py-1 rounded-full font-semibold">Categoria</span>
+          <h3 id="modal-product-name" class="text-xl md:text-2xl font-serif-elegant text-sage-900 mt-3 font-semibold leading-tight">Nome do Produto</h3>
+          <p id="modal-product-description" class="text-xs text-sage-600 mt-2 leading-relaxed font-light">Descrição detalhada do produto.</p>
+          
+          <div class="mt-4 pt-4 border-t border-sage-200/40 space-y-1">
+            <p class="text-[10px] text-sage-400 uppercase tracking-wider">Características:</p>
+            <p id="modal-product-notes" class="text-xs text-sage-850 font-medium italic">Características do produto</p>
+          </div>
+
+          <!-- Variations Selection -->
+          <div class="mt-4 pt-4 border-t border-sage-200/40">
+            <span class="block text-[10px] font-semibold text-sage-700 uppercase tracking-wider mb-2">Modelos / Fragrâncias Disponíveis:</span>
+            <div id="modal-product-variations" class="flex flex-wrap gap-2">
+              <!-- Dynamically populated buttons -->
+            </div>
+          </div>
+
+          <!-- Sizes Selection -->
+          <div class="mt-4 pt-4 border-t border-sage-200/40">
+            <span class="block text-[10px] font-semibold text-sage-700 uppercase tracking-wider mb-2">Tamanhos / Volumes Disponíveis:</span>
+            <div id="modal-product-sizes" class="flex flex-wrap gap-2">
+              <!-- Dynamically populated buttons -->
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="flex justify-between items-baseline mb-4 pt-4 border-t border-sage-200/40">
+            <div class="flex flex-col">
+              <span class="text-[9px] text-sage-450 uppercase tracking-wider">Valor total:</span>
+              <span id="modal-product-price" class="text-2xl font-bold text-sage-850">R$ 0,00</span>
+            </div>
+            <div class="flex flex-col items-end">
+              <span class="text-[9px] text-sage-450 uppercase tracking-wider">Disponibilidade:</span>
+              <span id="modal-product-stock" class="text-xs font-semibold text-emerald-600">Em Estoque</span>
+            </div>
+          </div>
+
+          <button id="modal-add-to-cart-btn" class="w-full bg-[#2F3E33] hover:bg-sage-850 text-white font-medium py-3 px-4 rounded-xl transition-all duration-300 shadow-md flex items-center justify-center space-x-2 text-xs tracking-wider uppercase">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+            </svg>
+            <span>Adicionar ao Carrinho</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- AOS JS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
